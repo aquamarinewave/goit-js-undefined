@@ -1,0 +1,24 @@
+
+// Container
+.container {
+    min-width: 320px;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--container-bg);
+
+    // Tablet
+    @media screen and (min-width: 480px) and (max-width: 1279px) {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+     }
+     
+    // Desktop
+    @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
+     }
+}
