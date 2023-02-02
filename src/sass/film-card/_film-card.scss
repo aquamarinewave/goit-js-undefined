@@ -1,5 +1,4 @@
-.card-container {   
-    font-family: 'Roboto';
+.card{   
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -22,7 +21,7 @@
         height: 574px;
     }
 };
-.information{
+.card__information{
     display: flex;
     flex-direction: column;
     gap:5px;
@@ -38,16 +37,16 @@
     }      
 }
 
-.film-name{
+.card__film-name{
 text-transform: uppercase;
 };
 
-.additional-information {
+.card__additional-information {
     display: flex;
     color:var(--accent-color);
 };
 
-.vl{
+.card__vl{
     border-left: 1px solid var(--accent-color);
     width: 0;
     margin-left: 5px;
