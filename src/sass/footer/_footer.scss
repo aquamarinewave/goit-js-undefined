@@ -1,0 +1,29 @@
+.footer {
+  font-size: 14px;
+  background-color: #f7f7f7;
+  padding-top: 29px;
+  padding-bottom: 29px;
+  line-height: 1.18;
+}
+
+.footer__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #545454;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    font-size: 16px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .footer {
+    padding-top: 29px;
+    padding-bottom: 29px;
+  }
+}
