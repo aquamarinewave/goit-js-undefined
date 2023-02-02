@@ -1,2 +1,9 @@
-@import './common';
-@import './example';
+// base
+@import './base/container';
+@import './base/base';
+@import './base/reset';
+
+// utilits
+@import './utilits/common';
+@import './utilits/vars';
+@import './utilits/visually-hidden';
