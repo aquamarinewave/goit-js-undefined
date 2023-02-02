@@ -3,9 +3,14 @@
 @import './base/base';
 @import './base/resets';
 
+
 // utilits
 @import './utilits/common';
 @import './utilits/vars';
 @import './utilits/visually-hidden';
 
+// elements
+@import './film-card/film-card';
+
+// Footer
 @import './footer/footer';

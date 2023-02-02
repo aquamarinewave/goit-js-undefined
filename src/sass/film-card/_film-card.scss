@@ -1,0 +1,56 @@
+.card{   
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: var(--main-color);
+    @media screen and(min-width:1200px){
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+.card-pic{
+    @media screen and(min-width: 768px) {
+        width:336px;
+        height: 455px;
+    }
+    @media screen and(min-width: 1200px) {
+        width: 395px;
+        height: 574px;
+    }
+};
+.card__information{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    @media screen and(min-width: 768px) {
+    margin-top: 8px;
+    margin-bottom: 32px;
+    }
+    @media screen and(min-width: 1200px) {
+    margin-top: 12px;
+    }      
+}
+
+.card__film-name{
+text-transform: uppercase;
+};
+
+.card__additional-information {
+    display: flex;
+    color:var(--accent-color);
+};
+
+.card__vl{
+    border-left: 1px solid var(--accent-color);
+    width: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
