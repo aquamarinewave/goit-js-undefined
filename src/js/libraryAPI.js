@@ -33,12 +33,20 @@ export default class MoviesLibrary {
 
   // -------  INTERFACE  -------
   
+  getCount() {
+    return this.#movies.length;
+  }
+
   getMovies() {
     return this.#movies;
   }
 
-  getMoviesPage(page = 1, per_page = 20) {
-    return this.#movies.slice((page - 1) * per_page, page * per_page);
+  getMoviesPage(page = 1, per_page = -1) {     // per_page == -1 - get all library, without pagination
+    if (per_page == -1) {
+      return this.#movies;
+    } else {
+      return this.#movies.slice((page - 1) * per_page, page * per_page);
+    }
   }
 
   refreshMovies() {
