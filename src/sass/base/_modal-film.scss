@@ -65,7 +65,7 @@
 
            @media screen and (min-width: 1280px) {
             min-width: 375px;
-                height: 478px;
+                height: 472px;
            }
     
 }
@@ -87,6 +87,8 @@ margin-bottom: 20px;
     width: 215px;
     margin-bottom: 20px;
 }
+
+
 
 .modal__td{
     font-family: 'Roboto';
@@ -124,18 +126,26 @@ margin-bottom: 20px;
         text-transform: uppercase;
 
         margin-bottom: 8px;
+
 }
 
 .modal__text{
     font-weight: 500;
         font-size: 12px;
         line-height: 1.67;
-        margin-bottom: 26px;
+        margin-bottom: 20px;
+
+        @media screen and (min-width: 1280px) {
+                margin-bottom: 25px;
+            }
 }
 
 .modal__flex{
     display: flex;
     gap: 20px;
+    @media screen and (min-width:  768px) {
+            gap: 15px;
+        }
 }
 
 .modal__button{
@@ -155,6 +165,7 @@ margin-bottom: 20px;
 }
 
 .modal__button--watched{
+    
 padding: 6px 27px;
 background-color: #FF6B01;
 border: none;
@@ -162,6 +173,8 @@ color: #FFFFFF;
 @media screen and (min-width: 768px) {
     padding: 14px 12px 12px 12px;
     white-space: nowrap;
+    min-width: 125px;
+    
 }
  @media screen and (min-width: 1280px) {
      min-width: 136px;
