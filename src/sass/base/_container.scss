@@ -1,0 +1,12 @@
+.main-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: -15px;
+}
+.movie-card{
+    max-width: 359px;  
+   margin: 15px;
+    margin-bottom: 32px;
+    flex-basis: calc((100% - 3 * 30px) / 3);
+}
