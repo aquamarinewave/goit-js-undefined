@@ -1,0 +1,19 @@
+
+// Container Gallery
+.gallery {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: var(--container-bg);
+
+    // Tablet
+    @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+     }
+     
+    // Desktop
+    @media screen and (min-width: 1280px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+     }
+}
