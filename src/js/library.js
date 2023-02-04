@@ -1,62 +1,96 @@
-import MoviesLibrary from './libraryAPI';
+import myLibs from './library-service';
+import createFilmCardMarkup from './film-card';
 
-const myLib = {
-  watched: new MoviesLibrary('Watched_Test'),
-  queue:   new MoviesLibrary('Queue_Test')
-}
+let myLib = myLibs.watched;
 
-// myLib.queue.addMovie({id: '5', genres: 'mmmmm'});
+let page = 1;
+const per_page = 6;   // !?! установить коррект
 
 const refs = {
-  gallery:       document.querySelector('.gallery'),
-  //guardDiv:      document.querySelector('.js-guard'),
+  gallery: document.querySelector('.gallery'),
 };
 
 if (Object.values(refs).some(el => !el)) {
   throw new Error('Error: invalid markup!');
 }
 
-const page = 1;
-const per_page = -1;   // пока без пагинации
+refs.gallery.insertAdjacentHTML('afterend', `<div class="js-guard"></div>`); 
+refs.guardDiv = document.querySelector('.js-guard');
 
-function showLibrary(libName) {
-  const movies = myLib[libName].getMoviesPage(page, per_page); 
+// !?! Тестовая разметка - удалить при деплое, заменить на реал
+
+refs.gallery.insertAdjacentHTML('beforebegin', `<button type="button" id="btn-watched" class="btn-library is-active">Watched</button>`); 
+refs.gallery.insertAdjacentHTML('beforebegin', `<button type="button" id="btn-queue" class="btn-library">Queue</button>`); 
+
+refs.btnWatched = document.querySelector('#btn-watched');
+refs.btnQueue = document.querySelector('#btn-queue');
+
+// -----------------------------------
+
+refs.btnWatched.addEventListener('click', onBtnLibraryClick);
+refs.btnQueue.addEventListener('click', onBtnLibraryClick);
+
+function onBtnLibraryClick(evt) {
+  const curBtn = evt.currentTarget;
+  if (((curBtn == refs.btnWatched) && (myLib == myLibs.watched)) ||
+      ((curBtn == refs.btnQueue) && (myLib == myLibs.queue))) {
+    return;
+  }
+
+  page = 1;
+
+  if (curBtn == refs.btnWatched) {
+    myLib = myLibs.watched;
+    refs.btnWatched.classList.add('is-active');
+    refs.btnQueue.classList.remove('is-active');
+  } else if (curBtn == refs.btnQueue) {
+    myLib = myLibs.queue;
+    refs.btnWatched.classList.remove('is-active');
+    refs.btnQueue.classList.add('is-active');
+  }
+
+  myLib.refreshMovies();
+  showLibrary();
+}
+
+const observerOpts = {
+  root: null,
+  rootMargin: '300px',
+  threshold: 1.0
+}
+
+const onObserve = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (page < myLib.getCountPages(per_page)) {
+        page += 1;
+        showLibrary();  
+      }
+    }
+  });
+}
+
+const observer = new IntersectionObserver(onObserve, observerOpts);
+
+function showLibrary() {
+
+  if ((page == 1) && (myLib.getCount() > 0)) {
+    refs.gallery.innerHTML = '';
+  }
+
+  const movies = myLib.getMoviesPage(page, per_page); 
 
   refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(movies));
+
+  if ((page == 1) && (myLib.getCountPages(per_page) > 1)) {
+    observer.observe(refs.guardDiv);
+  } else if (page == myLib.getCountPages(per_page)) {
+    observer.unobserve(refs.guardDiv);
+  }
 }
 
 function createGalleryMarkup(movies) {
-  return movies.map(({posterURL, title, genres, year}) => `
-    <div class="card">
-        <img src="${posterURL}" class="card__pic">
-        <div class="card__information">
-        <p class="card__film-name">${title}</p>
-        <div class="card__additional-information">
-            <ul class="card__gener-list">
-                <li class="card__gener-item">${genres}</li>
-            </ul>
-            <div class="card__vl"></div>
-            <p class="card__release-year">${year}</p>
-        </div>
-        </div>
-    </div>
-  `).join('');
+  return movies.map(movie => createFilmCardMarkup(movie)).join('');
 }
 
-// Тестовое наполнение
-
-myLib.watched.clearMovies();
-for (let i = 0; i < 20; i += 1) {
-  myLib.watched.addMovie({
-    id: i+1,
-    title: 'ONCE UPON A TIME... IN HOLLYWOOD',
-    posterURL: 'https://www.themoviedb.org/t/p/original/pZlSc3Ib8GyhXVfPXUXGEw92Obq.jpg',
-    genres: 'Drama, Comedy',
-    year: 2019
-  });  
-}
-// ------------------------------
-
-showLibrary('watched');
-
-export default myLib;
+showLibrary();
