@@ -1,6 +1,9 @@
 export { onSearch };
+import { createSearchMarkup } from './createsearchmarkup';
 import { getSearchMovieAPI } from './show-results';
 import Notiflix from 'notiflix';
+// import { gallery } from '../index';
+const gallery = document.querySelector('.gallery');
 
 function onSearch(e) {
   e.preventDefault();
@@ -15,7 +18,7 @@ function onSearch(e) {
         );
       } else {
         // console.log(data.results);
-        gallery.innerHTML = createMarkup(data);
+        gallery.innerHTML = createSearchMarkup(data);
       }
     })
     .catch(err => console.log(err));
