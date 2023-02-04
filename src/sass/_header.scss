@@ -1,8 +1,9 @@
-a {
-  text-decoration: none
-}
+// variable
+$color_white: #FFFFFF;
+$transparent_color: rgba($color: #000000, $alpha: 0.0);
+
 // container logo and navbar
-.headar_contaiter{
+.headar__contaiter{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -31,16 +32,17 @@ a {
     }
   }
 }
-.navlogo-search_container{
+.navlogo-search__container{
   padding: 40px 20px;
 }
-.navlogo_container{
+.navlogo__container{
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   margin-bottom: 11px;
 }
-.logo_text{
+.logo__text{
 
   font-style: normal;
   font-weight: 500;
@@ -53,44 +55,45 @@ a {
   }
 }
 
-.navlink_list{
+.navlink__list{
   display: flex;
   align-items: center;
   text-align: center;
 
   list-style-type: none;
 }
-.navlink_list{}
   
-.navlink_item{
+.navlink__item{
+  & a{
+    text-decoration: none;
+  }
   &:first-child{
     margin-right: 40px;
   }
-  
   & a{
     text-transform: uppercase;
-  color: rgb(255, 255, 255);
+  color: $color_white;
   }
 }
 
-.actual_page{
+.actual__page{
   border-bottom: 3px solid #FF001B;
 }
 
 //search container
 
-.search_inputbutton{
+.search__inputbutton{
   position: relative;
-  border-bottom: 0.5px solid #FFFFFF;
+  border-bottom: 0.5px solid $color_white;
   @media screen and (min-width: 768px) {
     max-width: 337px;
     margin: 0 auto;
   }
 }
-.search_input{
+.search__input{
   width: 100%;
-  border-color: rgba($color: #000000, $alpha: 0.0);
-  background-color: rgba($color: #000000, $alpha: 0.0);
+  border-color: $transparent_color;
+  background-color: $transparent_color;
 
   font-style: normal;
   font-weight: 400;
@@ -98,7 +101,7 @@ a {
   line-height: 16px;
   align-items: center;
 
-  color: #FFFFFF;
+  color: $color_white;
 
   &:focus-visible{
     outline: -webkit-focus-ring-color auto 0px;
@@ -111,19 +114,19 @@ a {
     line-height: 16px;
     align-items: center;
 
-    color: #FFFFFF;
+    color: $color_white;
   }
 
 }
-.search_button{
+.search__button{
   position: absolute;
   top: 0px;
   right: 0px;
   border: 0px solid red;
-  background-color: rgba($color: #000000, $alpha: 0.0);
+  background-color: $transparent_color;
 }
 
-.search_nofind{
+.search__nofind{
   
   font-weight: 400;
   font-size: 14px;

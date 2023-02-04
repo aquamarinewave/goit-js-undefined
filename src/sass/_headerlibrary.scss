@@ -1,4 +1,7 @@
-.headar-library_contaiter{
+// variable
+$color_active_button: #FF6B01;
+// background img and button style 
+.headar-library__contaiter{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -27,7 +30,7 @@
     }
   }
 }
-.buttons_list{
+.buttons__list{
   list-style: none;
   display: flex;
   justify-content:space-between;
@@ -37,19 +40,19 @@
     max-width: 337px;
   }
 }
-.buttons_item{
+.buttons__item{
   text-align: center;
   
   width: 130px;
   height: 44px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid $color_white;
   border-radius: 5px;
   &:first-child{
     margin-right: 20px;
   }
   &:hover{
-    background-color: #FF6B01;
-    border: 1px solid #FF6B01;
+    background-color: $color_active_button;
+    border: 1px solid $color_active_button;
   }
   @media screen and (min-width: 321px) {
     margin: 0 auto;
@@ -57,11 +60,11 @@
     height: 44px;
   }
 }
-.buttons_item button{
+.buttons__item button{
   display: inline-block;
   padding: 12px 0px;
-  background-color: rgba($color: #000000, $alpha: 0.0);
+  background-color: $transparent_color;
   border: none;
-  color: #FFFFFF;
+  color: $color_white;
   text-transform: uppercase;
 }
