@@ -134,9 +134,16 @@ margin-bottom: 20px;
         font-size: 12px;
         line-height: 1.67;
         margin-bottom: 20px;
+        min-height: 236px;
+
+@media screen and (min-width: 768px) {
+        height: 236px;
+        overflow: auto;
+    }
 
         @media screen and (min-width: 1280px) {
                 margin-bottom: 25px;
+                height: 160px;
             }
 }
 
