@@ -31,7 +31,7 @@ refs.btnWatched.addEventListener('click', onBtnLibraryClick);
 refs.btnQueue.addEventListener('click', onBtnLibraryClick);
 
 function onBtnLibraryClick(evt) {
-  curBtn = evt.currentTarget;
+  const curBtn = evt.currentTarget;
   if (((curBtn == refs.btnWatched) && (myLib == myLibs.watched)) ||
       ((curBtn == refs.btnQueue) && (myLib == myLibs.queue))) {
     return;
