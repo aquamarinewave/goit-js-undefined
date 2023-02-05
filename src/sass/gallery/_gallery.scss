@@ -1,0 +1,36 @@
+// Container Gallery
+.gallery {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: var(--container-bg);
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+
+
+  // Tablet
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 32px;
+    padding-right: 32px;
+    justify-content: space-between;
+  }
+
+  // Desktop
+  @media screen and (min-width: 1280px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    display: flex;
+    margin: -15px;
+    flex-wrap: wrap;
+  }
+}
+
+.movie-card {
+  max-width: 359px;
+  margin: 15px;
+  margin-bottom: 32px;
+  flex-basis: calc((100% - 3 * 30px) / 3);
+}
