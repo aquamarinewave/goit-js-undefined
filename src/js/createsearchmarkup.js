@@ -22,7 +22,7 @@ function createSearchMarkup(data) {
                     ? genre_ids.map(id => savedGenres[id]).join(', ')
                     : 'Unknown genre'
                 }
-                  <span class="card__vl">
+                  <span class="">
                     |
                   </span>
                   <span class="card__release-year">
