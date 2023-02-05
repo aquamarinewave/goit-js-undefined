@@ -11,7 +11,6 @@ const mainGallery = document.querySelector('.main-gallery');
 //}
 console.log(getTrendingAPI);
 function rederMainPage(data) {
-  spin(mainGallery);
   const imageURL = `https://image.tmdb.org/t/p/w500`;
   let markup = data.results
     .map(
