@@ -1,5 +1,6 @@
 import axios from 'axios'; 
 //import { getTrendingAPI } from './show-results'; 
+import {startPagination, setingsForPagination} from './pagination'
 import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results'; 
 const mainGallery = document.querySelector(".gallery"); 
  
@@ -25,8 +26,11 @@ const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
   mainGallery.innerHTML = markup; 
 } 
  
-async function fetchHandler() { 
-  getTrendingAPI().then(results => rederMainPage(results)); 
+export async function fetchHandler(pages) { 
+  const { page, total_results: totalItems } = await getTrendingAPI(pages);
+  startPagination({ page, totalItems });
+  setingsForPagination.typePagination = 'getTrendingAPI';
+  getTrendingAPI(pages).then(results => rederMainPage(results)); 
 } 
  
 fetchHandler()
