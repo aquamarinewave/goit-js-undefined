@@ -41,6 +41,10 @@ export default class MoviesLibrary {
     return this.#movies;
   }
 
+  getCountPages(per_page) {
+    return Math.ceil(this.#movies.length / per_page);
+  }
+
   getMoviesPage(page = 1, per_page = -1) {     // per_page == -1 - get all library, without pagination
     if (per_page == -1) {
       return this.#movies;
