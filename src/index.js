@@ -1,1 +1,5 @@
-import getApi from './js/show-results';
+import {
+  getTrendingAPI,
+  getSearchMovieAPI,
+  getMovieInformationForIdAPI,
+} from './js/show-results';
