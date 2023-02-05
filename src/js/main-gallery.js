@@ -1,6 +1,6 @@
 import axios from 'axios';
 //import { getTrendingAPI } from './show-results';
-import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
+import { getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
 const mainGallery = document.querySelector(".gallery");
 
 
@@ -25,9 +25,7 @@ function rederMainPage(data) {
     <p class="info-item">
       <b> ${title}</b>
     </p>
-      
      </li>
-    
     `
     )
     .join('');
