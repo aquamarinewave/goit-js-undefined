@@ -1,6 +1,10 @@
 <!-- <div class="overlay hidden">
   <section class="modal hidden">
-    <button type="button" class="modal__button-cls">X</button>
+    <button type="button" class="modal__button-cls">
+      <svg height="30" width="30" class="modal__icon">
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
     <div class="modal__poster">
       <img
         class="modal__image"
@@ -43,10 +47,16 @@
         but by who and how?
       </p>
       <div class="modal__flex">
-        <button class="modal__button modal__button--watched" type="button">
+        <button
+          class="modal__button modal__button--watched js-active"
+          type="button"
+        >
           add to Watched
         </button>
-        <button class="modal__button modal__button--queue" type="button">
+        <button
+          class="modal__button modal__button--queue js-active"
+          type="button"
+        >
           add to queue
         </button>
       </div>
