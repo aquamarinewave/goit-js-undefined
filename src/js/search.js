@@ -22,5 +22,4 @@ function onSearch(e) {
       }
     })
     .catch(err => console.log(err));
-  e.currentTarget.reset();
 }
