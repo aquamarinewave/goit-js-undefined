@@ -23,5 +23,15 @@
     @media screen and (min-width: 1280px) {
     padding-top: 60px;
     padding-bottom: 60px;
+    display: flex;
+              margin: -15px;
+               flex-wrap: wrap;
      }
+}
+
+.movie-card {
+   max-width: 359px;
+    margin: 15px;
+    margin-bottom: 32px;
+    flex-basis: calc((100% - 3 * 30px) / 3);
 }
