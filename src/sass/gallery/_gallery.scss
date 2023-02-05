@@ -5,9 +5,9 @@
   background-color: var(--container-bg);
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   padding-left: 20px;
   padding-right: 20px;
-
 
   // Tablet
   @media screen and (min-width: 768px) {
@@ -15,7 +15,7 @@
     padding-bottom: 60px;
     padding-left: 32px;
     padding-right: 32px;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   // Desktop
@@ -23,14 +23,30 @@
     padding-top: 60px;
     padding-bottom: 60px;
     display: flex;
-    margin: -15px;
     flex-wrap: wrap;
   }
 }
 
+
+.cont_gallery {
+padding-left: 0px;
+padding-right: 0px;
+}
+
+
+// Card position
 .movie-card {
   max-width: 359px;
   margin: 15px;
   margin-bottom: 32px;
+  flex-basis: calc((100% - 3 * 30px) / 1); 
+
+// Tablet
+  @media screen and (min-width: 768px) {
+  flex-basis: calc((100% - 3 * 30px) / 2); 
+  }
+// Desktop
+  @media screen and (min-width: 1280px) {
   flex-basis: calc((100% - 3 * 30px) / 3);
+  }
 }
