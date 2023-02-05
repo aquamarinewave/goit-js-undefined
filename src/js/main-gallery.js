@@ -9,7 +9,7 @@ const mainGallery = document.querySelector(".main-gallery");
 //    return axios.get(APItrending);
 //rederMainPage(resalts)
 //}
-console.log(getTrendingAPI)
+// console.log(getTrendingAPI)
  function rederMainPage(data) {
   const imageURL = `https://image.tmdb.org/t/p/w500`;
    let markup = data.results.map(({ poster_path, title }) =>
