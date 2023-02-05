@@ -7,7 +7,7 @@ function createSearchMarkup(data) {
   return data.results
     .map(
       ({ poster_path, original_title, release_date, genre_ids, id }) =>
-        `<div class="card" data-filmid="${id}">
+        `<li class="card" data-filmid="${id}">
           <img class="card__pic" src="${POSTER_BASE_URL}${poster_path}" alt="${original_title}">
           <div class="card__information">
             <p class="card__film-name">${original_title}</p>
@@ -23,7 +23,7 @@ function createSearchMarkup(data) {
               </p>
             </div>
           </div>
-        </div>`
+        </li>`
     )
     .join('');
 }
