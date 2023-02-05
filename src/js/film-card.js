@@ -1,7 +1,7 @@
 export default
-function createFilmCardMarkup({ posterURL = '', title = '', genres = 'no info', year = 'no info' }) {
+function createFilmCardMarkup({id, posterURL = '', title = '', genres = 'no info', year = 'no info', votes = '' }) {
   return ` 
-    <div class="card">
+    <div class="card" data-filmid="${id}">
         <img src="${posterURL}" class="card__pic">
         <div class="card__information">
             <p class="card__film-name">${title}</p>

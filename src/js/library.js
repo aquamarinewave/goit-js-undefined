@@ -11,7 +11,7 @@ const refs = {
 };
 
 if (Object.values(refs).some(el => !el)) {
-  throw new Error('Error: invalid markup!');
+  throw new Error('Invalid markup!');
 }
 
 refs.gallery.insertAdjacentHTML('afterend', `<div class="js-guard"></div>`); 
