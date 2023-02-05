@@ -26,7 +26,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
   transition: opacity var(--animation), visibility var(--animation);
 
   &.is-hidden {
@@ -223,8 +222,6 @@
   z-index: 970;
 }
 
-
-
 .fourth-rightside {
   display: flex;
   flex-direction: column;
@@ -236,8 +233,6 @@
   color: #dfdede;
   font-size: 25px;
 }
-
-
 
 .rightside-text::marker {
   color: var(--accent-color);
@@ -257,15 +252,71 @@
   padding: 15px;
   display: flex;
   justify-content: space-between;
-
 }
 
 .fourth-image {
   box-shadow: (0px 8px 43px var(--accent-color));
 }
 
-.fourth-btn__press:hover {
-border: 1px solid var(--accent-color);
-color: var(--accent-color);
-background-color: #dfdede;
+.fourth-btn__press:hover,
+.fifth-btn__press:hover {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  background-color: #dfdede;
 }
+
+.fifth-backdrop {
+  background-color: #10181d;
+  width: 100%;
+  height: 100%;
+  z-index: 960;
+}
+
+.fifth-header {
+  box-shadow: (0px 8px 43px var(--accent-color));
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  color: #dfdede;
+}
+
+.fifth-title {
+  color: #dfdede;
+
+  font-size: 40px;
+}
+
+.fifth-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  list-style: inside;
+}
+
+.fifth-text {
+  color: #dfdede;
+  font-size: 25px;
+}
+
+.fifth-text::marker {
+  color: var(--accent-color);
+  font-size: 30px;
+}
+
+.fifth-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  gap: 100px;
+}
+
+
+
+.fifth-way {
+  width: 100%;
+  height: 100%;
+}
+@import './heart.scss'
+

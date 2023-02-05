@@ -15,18 +15,18 @@ fourthBtn.addEventListener('click', onFourthClick);
 fifthBtn.addEventListener('click', onFifthClick);
 
 function onFirstClick() {
-  firstBack.classList.add = 'is-hidden';
+  firstBack.classList = 'first-backdrop backdrop__press is-hidden';
 }
 function onSecondClick() {
-  secondBack.classList.add = 'is-hidden';
+  secondBack.classList = 'second-backdrop backdrop__press is-hidden';
 }
 function onThirdClick() {
-  thirdBack.classList.add = 'is-hidden';
+  thirdBack.classList = 'third-backdrop backdrop__press is-hidden';
 }
 function onFourthClick() {
-  fourthBack.classList.add = 'is-hidden';
+  fourthBack.classList = 'fourth-thumb backdrop__press is-hidden';
 }
 
 function onFifthClick() {
-  fifthBack.classList.add = 'is-hidden';
+  fifthBack.classList.add = 'fifth-backdrop backdrop__press is-hidden';
 }
