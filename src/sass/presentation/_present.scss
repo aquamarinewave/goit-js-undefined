@@ -175,10 +175,65 @@
   }
 }
 
+.second-press__title {
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dfdede;
+  font-size: 55px;
+}
+
+.second-press__undertitle {
+  position: absolute;
+  top: 500px;
+  left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dfdede;
+  font-size: 55px;
+}
+
 .second-backdrop {
   z-index: 990;
+  position: fixed;
 }
 
 .third-backdrop {
   z-index: 980;
+}
+
+.fourth-backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+}
+
+.fourth-thumb {
+  position: fixed;
+
+  width: 100%;
+  height: 100%;
+   background-color: #10181d;
+  z-index: 970;
+
+
+}
+
+.fourth-leftside {
+}
+
+.fourth-rightside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: circle;
+}
+
+.rightside-text {
+  color: #dfdede;
 }
