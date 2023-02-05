@@ -7,7 +7,9 @@ let page = 1;
 const per_page = 6;   // !?! установить коррект
 
 const refs = {
-  gallery: document.querySelector('.gallery'),
+  gallery:    document.querySelector('.gallery'),
+  btnWatched: document.querySelector('#btn-watched'),
+  btnQueue:   document.querySelector('#btn-queue'),
 };
 
 if (Object.values(refs).some(el => !el)) {
@@ -16,16 +18,6 @@ if (Object.values(refs).some(el => !el)) {
 
 refs.gallery.insertAdjacentHTML('afterend', `<div class="js-guard"></div>`); 
 refs.guardDiv = document.querySelector('.js-guard');
-
-// !?! Тестовая разметка - удалить при деплое, заменить на реал
-
-refs.gallery.insertAdjacentHTML('beforebegin', `<button type="button" id="btn-watched" class="btn-library is-active">Watched</button>`); 
-refs.gallery.insertAdjacentHTML('beforebegin', `<button type="button" id="btn-queue" class="btn-library">Queue</button>`); 
-
-refs.btnWatched = document.querySelector('#btn-watched');
-refs.btnQueue = document.querySelector('#btn-queue');
-
-// -----------------------------------
 
 refs.btnWatched.addEventListener('click', onBtnLibraryClick);
 refs.btnQueue.addEventListener('click', onBtnLibraryClick);
@@ -94,3 +86,84 @@ function createGalleryMarkup(movies) {
 }
 
 showLibrary();
+
+// ---------  LIBRARY IN MODAL  -----------
+
+const refsM = {
+  btnWatched: document.querySelector('.modal__button--watched'),
+  btnQueue:   document.querySelector('.modal__button--queue'),
+  infoId:     document.querySelector('.modal__information'),
+  title:      document.querySelector('.modal__title'),
+  poster:     document.querySelector('.modal__image'),
+  overview:   document.querySelector('.modal__text'),
+};
+
+if (Object.values(refsM).some(el => !el)) {
+  throw new Error('Invalid markup of modal window!');
+}
+
+refsM.btnWatched.addEventListener('click', onModalLibraryClick.bind(null, "watched"));
+refsM.btnQueue.addEventListener('click', onModalLibraryClick.bind(null, "queue"));
+
+function getModalFilmId() {
+  return refsM.infoId.dataset.filmid;
+}
+
+function onModalLibraryClick(libName) {
+  const movieId = getModalFilmId();
+
+  if (!movieId) {
+    return;
+  }
+
+  if (myLibs[libName].getMovieById(movieId)) {
+    myLibs[libName].removeMovie(movieId);
+  } else {
+    const movie = getMovieModal();
+    myLibs[libName].addMovie(movie);
+  }
+  refreshBtns();
+}
+
+function refreshBtns() {
+  const movieId = getModalFilmId();
+
+  if (!movieId) {
+    return;
+  }
+
+  if (myLibs.watched.getMovieById(movieId)) {
+    refsM.btnWatched.textContent = 'REMOVE FROM WATCHED';
+    refsM.btnWatched.classList.remove("active");
+  } else {
+    refsM.btnWatched.textContent = 'ADD TO WATCHED';
+    refsM.btnWatched.classList.add("active");
+  }
+
+  if (myLibs.queue.getMovieById(movieId)) {
+    refsM.btnQueue.textContent = 'REMOVE FROM QUEUE';
+    refsM.btnQueue.classList.remove("active");
+  } else {
+    refsM.btnQueue.textContent = 'ADD TO QUEUE';
+    refsM.btnQueue.classList.add("active");
+  }
+}
+
+function getMovieModal() {
+  const movie = {
+    id: movieId,
+    title: refsM.title.textContent,
+    posterURL: refsM.poster.src,
+    overview: refsM.overview.textContent,
+    /* !?! - доделать когда будет разметка
+    genres: 'Drama, Comedy',
+    year: 2022,
+    vote: '5.7',
+    votes: '1234',
+    popularity: '100.2',
+    original: `Avatar: The Way of Water`,
+    */
+  };
+
+  return movie;
+}
