@@ -1,11 +1,1 @@
-// import axios from "axios";
-
-
-async function getApi() {
-    const baseUrl = "";
-    const GLOBAL_KEY = ""
-
-
-}
-
-export default getApi;
+export { getSearchMovieAPI, BASE_URL, GLOBAL_KEY };
