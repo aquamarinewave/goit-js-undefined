@@ -4,18 +4,21 @@ import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
 const mainGallery = document.querySelector(".gallery");
 
 
-async function getGenresAPI() {
-  const response = await axios.get(
-    `${BASE_URL}genre/movie/list?api_key=${GLOBAL_KEY}&language=en-US`
-  );
-  const savedGenres = Object.fromEntries(
-    response.data.genres.map(genre => [genre.id, genre.name])
-  );
-  localStorage.setItem('allGenres', JSON.stringify(savedGenres));
-  console.log(savedGenres);
+//async function getGenresAPI() {
+ // const response = await axios.get(
+ //   `${BASE_URL}genre/movie/list?api_key=${GLOBAL_KEY}&language=en-US`
+ // );
+ // const savedGenres = Object.fromEntries(
+ //   response.data.genres.map(genre => [genre.id, genre.name])
+ // );
+   
+  //localStorage.setItem('allGenres', JSON.stringify(savedGenres));
+  //console.log(savedGenres);
   
-}
+//}
 const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
+
+
  function rederMainPage(data) {
   const imageURL = `https://image.tmdb.org/t/p/w500`;
    let markup = data.results.map(({ poster_path, title, release_date, genre_ids }) =>
@@ -25,7 +28,10 @@ const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
     <p class="info-item">
       <b> ${title}</b>
     </p>
-    
+    <p class="card__additional-information">
+        ${genre_ids
+          } | ${release_date.slice(0, 4)}
+        </p>
      </li>
     
     `
