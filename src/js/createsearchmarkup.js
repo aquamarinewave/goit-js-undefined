@@ -6,19 +6,31 @@ const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
 function createSearchMarkup(data) {
   return data.results
     .map(
-      ({ poster_path, original_title, release_date, genre_ids, id }) =>
+      ({ poster_path, title, release_date, genre_ids, id }) =>
         `<li class="card" data-filmid="${id}">
-          <img class="card__pic" src="${POSTER_BASE_URL}${poster_path}" alt="${original_title}">
+          <img class="card__pic" src="${
+            poster_path
+              ? POSTER_BASE_URL
+              : 'https://dummyimage.com/400x500/dbdbdb/000000.png&text=No+poster'
+          }${poster_path ? poster_path : ''}" alt="${title}">
           <div class="card__information">
-            <p class="card__film-name">${original_title}</p>
+            <p class="card__film-name">${title}</p>
             <div class="card__additional-information">
               <p class="card__gener-list">
-                ${genre_ids.map(id => savedGenres[id]).join(', ')}
-                  <span class="card__vl">
+                ${
+                  genre_ids.length !== 0
+                    ? genre_ids.map(id => savedGenres[id]).join(', ')
+                    : 'Unknown genre'
+                }
+                  <span class="">
                     |
                   </span>
                   <span class="card__release-year">
-                    ${release_date.slice(0, 4)}
+                    ${
+                      release_date
+                        ? release_date.slice(0, 4)
+                        : 'Unknown release date'
+                    }
                   </span>
               </p>
             </div>
