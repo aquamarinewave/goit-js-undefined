@@ -5,7 +5,7 @@ const secondBack = document.querySelector('.second-backdrop');
 const thirdBtn = document.querySelector('.third-btn__press');
 const thirdBack = document.querySelector('.third-backdrop');
 const fourthBtn = document.querySelector('.fourth-btn__press');
-const fourthBack = document.querySelector('.fourth-backdrop');
+const fourthBack = document.querySelector('.fourth-thumb');
 firstBtn.addEventListener('click', onFirstClick);
 secondBtn.addEventListener('click', onSecondClick);
 thirdBtn.addEventListener('click', onThirdClick);
@@ -21,5 +21,5 @@ function onThirdClick() {
   thirdBack.classList = 'third-backdrop backdrop__press is-hidden';
 }
 function onFourthClick() {
-  firstBack.classList = 'fourth-backdrop backdrop__press is-hidden';
+  fourthBack.classList = 'fourth-thumb backdrop__press is-hidden';
 }
