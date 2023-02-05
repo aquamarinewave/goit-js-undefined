@@ -6,10 +6,10 @@
     <symbol id="close_modal" viewBox="0 0 32 32">
       <path stroke-width="2.133" d="m8.533 8.533 14.933 14.933M8.533 23.467 23.466 8.534"/>
     </symbol>
-    <symbol id="arrow-left" viewBox="0 0 32 32">
+    <symbol id="arrow-first" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M25.333 16H6.666M16 25.333 6.667 16 16 6.667"/>
     </symbol>
-    <symbol id="arrow-right" viewBox="0 0 32 32">
+    <symbol id="arrow-last" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M6.667 16h18.667M16 25.333 25.333 16 16 6.667"/>
     </symbol>
     <symbol id="heart" viewBox="0 0 34 32">
