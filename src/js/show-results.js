@@ -25,3 +25,4 @@ async function getMovieInformationForIdAPI(id) {
 }
 
 export { getTrendingAPI, getSearchMovieAPI, getMovieInformationForIdAPI, BASE_URL, GLOBAL_KEY };
+// export { getTrendingAPI, getSearchMovieAPI, getMovieInformationForIdAPI };

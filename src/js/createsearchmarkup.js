@@ -6,6 +6,20 @@ const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
 function createSearchMarkup(data) {
   return data.results
     .map(
+      //  ({ poster_path, original_title, release_date, genre_ids }) =>
+      //   `<div class="card">
+      //   <img class="card__pic" src="${POSTER_BASE_URL}${poster_path}" alt="${original_title}">
+      //   <div class="card__information">
+      //   <p class="card__film-name">
+      //   ${original_title}
+      //   </p>
+      //   <p class="card__additional-information">
+      //   ${genre_ids
+      //     .map(id => savedGenres[id])
+      //     .join(', ')} | ${release_date.slice(0, 4)}
+      //   </p>
+      //   </div>
+      //   </div>`
       ({ poster_path, original_title, release_date, genre_ids, id }) =>
         `<li class="card" data-filmid="${id}">
           <img class="card__pic" src="${POSTER_BASE_URL}${poster_path}" alt="${original_title}">
