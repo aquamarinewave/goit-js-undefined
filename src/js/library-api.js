@@ -11,6 +11,8 @@ export default class MoviesLibrary {
     this.#loadMovies();
   }
 
+  // -------  PRIVATE SECTION  -------
+  
   #saveMovies() {
     try {
       localStorage.setItem(this.#LOCALSTORAGE_KEY, JSON.stringify(this.#movies));
@@ -41,6 +43,10 @@ export default class MoviesLibrary {
     return this.#movies;
   }
 
+  getMovieById(movieId) {
+    return this.#movies.find(el => el.id == movieId);
+  }
+
   getCountPages(per_page) {
     return Math.ceil(this.#movies.length / per_page);
   }
@@ -63,19 +69,19 @@ export default class MoviesLibrary {
   }
 
   addMovie(movie) {
-    const indexID = this.#movies.findIndex(el => el.id == movie.id);
-    if (indexID != -1) {
-      this.#movies[indexID] = movie;
+    const indexId = this.#movies.findIndex(el => el.id == movie.id);
+    if (indexId != -1) {
+      this.#movies[indexId] = movie;
     } else {
       this.#movies.push(movie);
     }
     this.#saveMovies();
   }
 
-  removeMovie(movieID) {
-    const indexID = this.#movies.findIndex(el => el.id == movieID);
-    if (indexID != -1) {
-      this.#movies.splice(indexID, 1);
+  removeMovie(movieId) {
+    const indexId = this.#movies.findIndex(el => el.id == movieId);
+    if (indexId != -1) {
+      this.#movies.splice(indexId, 1);
       this.#saveMovies();
     }
   }
