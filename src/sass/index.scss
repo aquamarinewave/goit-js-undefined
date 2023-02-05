@@ -19,5 +19,9 @@
 @import './footer/footer';
 
 //Headers
-@import './header';
-@import './headerlibrary';
+
+@import './header-headerlibrary/header';
+@import './header-headerlibrary/headerlibrary';
+
+// Pagination
+@import './pagination';
