@@ -8,7 +8,6 @@
   padding-left: 20px;
   padding-right: 20px;
 
-
   // Tablet
   @media screen and (min-width: 768px) {
     padding-top: 60px;
@@ -25,7 +24,20 @@
     display: flex;
     margin: -15px;
     flex-wrap: wrap;
+    // flex-direction: column;
   }
+}
+
+
+.cont_gallery {
+padding-left: 0px;
+padding-right: 0px;
+
+// Desktop
+@media screen and (min-width: 1280px) {
+padding-left: 15px;
+padding-right: 15px;
+}
 }
 
 .movie-card {
