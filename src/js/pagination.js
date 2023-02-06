@@ -7,13 +7,16 @@ import {
   getMovieInformationForIdAPI,
 } from './show-results';
 import { createSearchMarkup } from './createsearchmarkup';
+
+
 const paginationEl = document.querySelector('#pagination');
+const gallery = document.querySelector(".gallery")
 const icon = `${sprite}`;
+
 export const setingsForPagination = {
   typePagination: '',
   searchQuery: '',
 };
-// console.log(setingsForPagination);
 
 export const startPagination = ({ page = 1, totalItems }) => {
   const options = {
@@ -25,8 +28,6 @@ export const startPagination = ({ page = 1, totalItems }) => {
     usageStatistics: false,
     template: {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}p</strong>',
       currentPage:
         '<a href="#" class="tui-page-btn tui-is-selected">{{page}}</a>',
       moveButton:
@@ -61,10 +62,6 @@ export const startPagination = ({ page = 1, totalItems }) => {
         left: 0,
         behavior: 'smooth',
       });
-        //     setingsForPagination.searchQuery = query;
-        // setingsForPagination.typePagination = 'getSearchMovieAPI';
-        // const { page, total_results: totalItems } = getSearchMovieAPI(query, page);
-       // startPagination({ page, totalItems });
     }
   });
 };

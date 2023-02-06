@@ -23,7 +23,8 @@ async function getGenresAPI() {
 
  function rederMainPage(data) { 
   const imageURL = "https://image.tmdb.org/t/p/w500"; 
-   let markup = data.results.map(({ id, poster_path, title, release_date, genre_ids }) => 
+
+   let markup = data.map(({ id, poster_path, title, release_date, genre_ids }) => 
      `<li class="movie-card card" data-filmId="${id}"> 
      <a  href=''><img src=${imageURL}${poster_path} alt=${title} loading="lazy" height=574px width=395px /></a> 
     <p class="info-item"> 
@@ -44,10 +45,10 @@ async function getGenresAPI() {
 } 
  
 export async function fetchHandler(pages) { 
-  const { page, total_results: totalItems } = await getTrendingAPI(pages);
+  const { page, total_results: totalItems, results } = await getTrendingAPI(pages);
   startPagination({ page, totalItems });
   setingsForPagination.typePagination = 'getTrendingAPI';
-  getTrendingAPI(pages).then(results => rederMainPage(results)); 
+  rederMainPage(results); 
 } 
  
 fetchHandler()
