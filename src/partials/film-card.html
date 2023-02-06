@@ -1,5 +1,5 @@
 <!-- film-card -->
-
+<!--
 <div class="js-modal-container">
   <div class="card">
     <img src="./images/film-img.jpg" class="card__pic" />
@@ -15,12 +15,16 @@
     </div>
   </div>
 </div>
-
+-->
 <!-- modal-film -->
-
+<!--
 <div class="overlay visually-hidden">
   <section class="modal">
-    <button type="button" class="modal__button-cls">X</button>
+    <button type="button" class="modal__button-cls">
+      <svg height="30" width="30" class="modal__icon">
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
     <div class="modal__poster">
       <img
         class="modal__image"
@@ -28,7 +32,7 @@
         alt="Movie Poster"
       />
     </div>
-    <div class="modal__information">
+    <div class="modal__information" data-filmid="${id}">
       <h1 class="modal__title">A FISTFUL OF LEAD</h1>
       <table class="modal__table">
         <tr class="modal__tr">
@@ -63,15 +67,20 @@
         but by who and how?
       </p>
       <div class="modal__flex">
-        <button class="modal__button modal__button--watched" type="button">
+        <button
+          class="modal__button modal__button--watched js-active"
+          type="button"
+        >
           add to Watched
         </button>
-        <button class="modal__button modal__button--queue" type="button">
+        <button
+          class="modal__button modal__button--queue js-active"
+          type="button"
+        >
           add to queue
         </button>
       </div>
     </div>
   </section>
 </div>
-
-<script src="./js/modal-film.js"></script>
+-->

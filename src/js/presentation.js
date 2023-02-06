@@ -8,11 +8,14 @@ const fourthBtn = document.querySelector('.fourth-btn__press');
 const fourthBack = document.querySelector('.fourth-thumb');
 const fifthBtn = document.querySelector('.fifth-btn__press');
 const fifthBack = document.querySelector('.fifth-backdrop');
+const sixthBtn = document.querySelector('.sixth-btn__press');
+const sixthBack = document.querySelector('.sixth-backdrop');
 firstBtn.addEventListener('click', onFirstClick);
 secondBtn.addEventListener('click', onSecondClick);
 thirdBtn.addEventListener('click', onThirdClick);
 fourthBtn.addEventListener('click', onFourthClick);
 fifthBtn.addEventListener('click', onFifthClick);
+sixthBtn.addEventListener('click', onSixthClick);
 
 function onFirstClick() {
   firstBack.classList = 'first-backdrop backdrop__press is-hidden';
@@ -28,5 +31,9 @@ function onFourthClick() {
 }
 
 function onFifthClick() {
-  fifthBack.classList.add = 'fifth-backdrop backdrop__press is-hidden';
+  fifthBack.classList = 'fifth-backdrop backdrop__press is-hidden';
+}
+
+function onSixthClick() {
+  sixthBack.classList = 'sixth-backdrop backdrop__press is-hidden';
 }

@@ -1,5 +1,8 @@
 import myLibs from './library-service';
 import createFilmCardMarkup from './film-card';
+import createModalMarkup from './modal-film';
+
+import { initModal } from './library-modal';
 
 let myLib = myLibs.watched;
 
@@ -9,11 +12,14 @@ const per_page = 6;   // !?! установить коррект
 const refs = {
   gallery:    document.querySelector('.gallery'),
   btnWatched: document.querySelector('#btn-watched'),
-  btnQueue:   document.querySelector('#btn-queue'),
+  btnQueue: document.querySelector('#btn-queue'),
+  overlay: document.querySelector('.overlay'),
+  btnModalClose: document.querySelector(".modal__button-cls"),
+  modalContent: document.querySelector(".modal__content"),
 };
 
 if (Object.values(refs).some(el => !el)) {
-  throw new Error('Invalid markup!');
+  console.error('Error: invalid markup!');
 }
 
 refs.gallery.insertAdjacentHTML('afterend', `<div class="js-guard"></div>`); 
@@ -24,18 +30,18 @@ refs.btnQueue.addEventListener('click', onBtnLibraryClick);
 
 function onBtnLibraryClick(evt) {
   const curBtn = evt.currentTarget;
-  if (((curBtn == refs.btnWatched) && (myLib == myLibs.watched)) ||
-      ((curBtn == refs.btnQueue) && (myLib == myLibs.queue))) {
+  if (((curBtn === refs.btnWatched) && (myLib === myLibs.watched)) ||
+      ((curBtn === refs.btnQueue) && (myLib === myLibs.queue))) {
     return;
   }
 
   page = 1;
 
-  if (curBtn == refs.btnWatched) {
+  if (curBtn === refs.btnWatched) {
     myLib = myLibs.watched;
     refs.btnWatched.classList.add('is-active');
     refs.btnQueue.classList.remove('is-active');
-  } else if (curBtn == refs.btnQueue) {
+  } else if (curBtn === refs.btnQueue) {
     myLib = myLibs.queue;
     refs.btnWatched.classList.remove('is-active');
     refs.btnQueue.classList.add('is-active');
@@ -66,7 +72,8 @@ const observer = new IntersectionObserver(onObserve, observerOpts);
 
 function showLibrary() {
 
-  if ((page == 1) && (myLib.getCount() > 0)) {
+  //if ((page === 1) && (myLib.getCount() > 0)) {   // !?! - для заглушки пустой библиотеки
+  if (page === 1) {
     refs.gallery.innerHTML = '';
   }
 
@@ -74,9 +81,9 @@ function showLibrary() {
 
   refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(movies));
 
-  if ((page == 1) && (myLib.getCountPages(per_page) > 1)) {
+  if ((page === 1) && (myLib.getCountPages(per_page) > 1)) {
     observer.observe(refs.guardDiv);
-  } else if (page == myLib.getCountPages(per_page)) {
+  } else if (page === myLib.getCountPages(per_page)) {
     observer.unobserve(refs.guardDiv);
   }
 }
@@ -87,83 +94,55 @@ function createGalleryMarkup(movies) {
 
 showLibrary();
 
-// ---------  LIBRARY IN MODAL  -----------
+// ----------  MODAL  ----------
 
-const refsM = {
-  btnWatched: document.querySelector('.modal__button--watched'),
-  btnQueue:   document.querySelector('.modal__button--queue'),
-  infoId:     document.querySelector('.modal__information'),
-  title:      document.querySelector('.modal__title'),
-  poster:     document.querySelector('.modal__image'),
-  overview:   document.querySelector('.modal__text'),
-};
+refs.btnModalClose.addEventListener("click", onModalClose);
+refs.gallery.addEventListener("click", onGalleryClick);
 
-if (Object.values(refsM).some(el => !el)) {
-  throw new Error('Invalid markup of modal window!');
-}
+function onGalleryClick(evt) {
 
-refsM.btnWatched.addEventListener('click', onModalLibraryClick.bind(null, "watched"));
-refsM.btnQueue.addEventListener('click', onModalLibraryClick.bind(null, "queue"));
+  evt.preventDefault(); 
+  
+  const filmCard = evt.target.closest(".card");
+  if (!filmCard) {
+    return;  
+  }
+  const filmId = filmCard.dataset.filmid;
 
-function getModalFilmId() {
-  return refsM.infoId.dataset.filmid;
-}
-
-function onModalLibraryClick(libName) {
-  const movieId = getModalFilmId();
-
-  if (!movieId) {
+  const movie = myLib.getMovieById(filmId);
+  if (!movie) {
+    console.error(`Movie with id = ${filmId} isn't found in library!`);
     return;
   }
+    
+  refs.modalContent.innerHTML = createModalMarkup(movie);
 
-  if (myLibs[libName].getMovieById(movieId)) {
-    myLibs[libName].removeMovie(movieId);
-  } else {
-    const movie = getMovieModal();
-    myLibs[libName].addMovie(movie);
-  }
-  refreshBtns();
+  initModal();
+
+  refs.overlay.classList.remove('visually-hidden');
+  document.body.classList.add("modal__is-open");
+  document.addEventListener('keydown', onKeyDown);
+  refs.overlay.addEventListener("click", onBackdropClick);
 }
 
-function refreshBtns() {
-  const movieId = getModalFilmId();
+function onModalClose() {
+  refs.overlay.classList.add("visually-hidden");
+  document.body.classList.remove("modal__is-open");
 
-  if (!movieId) {
-    return;
-  }
-
-  if (myLibs.watched.getMovieById(movieId)) {
-    refsM.btnWatched.textContent = 'REMOVE FROM WATCHED';
-    refsM.btnWatched.classList.remove("active");
-  } else {
-    refsM.btnWatched.textContent = 'ADD TO WATCHED';
-    refsM.btnWatched.classList.add("active");
-  }
-
-  if (myLibs.queue.getMovieById(movieId)) {
-    refsM.btnQueue.textContent = 'REMOVE FROM QUEUE';
-    refsM.btnQueue.classList.remove("active");
-  } else {
-    refsM.btnQueue.textContent = 'ADD TO QUEUE';
-    refsM.btnQueue.classList.add("active");
-  }
+  page = 1;
+  showLibrary();
 }
 
-function getMovieModal() {
-  const movie = {
-    id: movieId,
-    title: refsM.title.textContent,
-    posterURL: refsM.poster.src,
-    overview: refsM.overview.textContent,
-    /* !?! - доделать когда будет разметка
-    genres: 'Drama, Comedy',
-    year: 2022,
-    vote: '5.7',
-    votes: '1234',
-    popularity: '100.2',
-    original: `Avatar: The Way of Water`,
-    */
-  };
+function onKeyDown(evt) {
+    if (evt.key === "Escape") {
+        onModalClose();
+        document.removeEventListener("keydown", onKeyDown);
+    }
+} 
 
-  return movie;
+function onBackdropClick(evt) {
+    if (evt.currentTarget === evt.target) {
+        onModalClose();
+        refs.overlay.removeEventListener("click", onBackdropClick);
+    }
 }
