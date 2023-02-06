@@ -8,11 +8,13 @@ function createSearchMarkup(data) {
     .map(
       ({ poster_path, title, release_date, genre_ids, id }) =>
         `<li class="movie-card card" data-filmid="${id}">
-          <img class="card__pic" src="${
-            poster_path
-              ? POSTER_BASE_URL
-              : 'https://dummyimage.com/400x500/dbdbdb/000000.png&text=No+poster'
-          }${poster_path ? poster_path : ''}" alt="${title}">
+          <a href="">
+            <img class="card__pic" src="${
+              poster_path
+                ? POSTER_BASE_URL
+                : 'https://dummyimage.com/400x500/dbdbdb/000000.png&text=No+poster'
+            }${poster_path ? poster_path : ''}" alt="${title}">
+          </a>
           <div class="info-item card__information">
             <p class="card__film-name">${title}</p>
             <div class="card__additional-information">
