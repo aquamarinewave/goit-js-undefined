@@ -19,6 +19,24 @@ if (Object.values(refs).some(el => !el)) {
 refs.gallery.insertAdjacentHTML('afterend', `<div class="js-guard"></div>`); 
 refs.guardDiv = document.querySelector('.js-guard');
 
+// Modal code
+// refs.gallery.addEventListener("click", onIdSearch);
+// function onIdSearch(e) {
+//   console.log(e)
+//     const filmCard = e.target.closest(".card");
+//   const filmId = filmCard.dataset.filmid;
+// movie = myLib.getMovieById(filmId);
+// }
+// !?! Тестовая разметка - удалить при деплое, заменить на реал
+
+refs.gallery.insertAdjacentHTML('beforebegin', `<button type="button" id="btn-watched" class="btn-library is-active">Watched</button>`); 
+refs.gallery.insertAdjacentHTML('beforebegin', `<button type="button" id="btn-queue" class="btn-library">Queue</button>`); 
+
+refs.btnWatched = document.querySelector('#btn-watched');
+refs.btnQueue = document.querySelector('#btn-queue');
+
+// -----------------------------------
+
 refs.btnWatched.addEventListener('click', onBtnLibraryClick);
 refs.btnQueue.addEventListener('click', onBtnLibraryClick);
 
