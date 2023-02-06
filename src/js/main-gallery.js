@@ -4,7 +4,6 @@ import {startPagination, setingsForPagination} from './pagination'
 import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results'; 
 const mainGallery = document.querySelector(".gallery"); 
  
-const mainGallery = document.querySelector(".gallery"); 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const GLOBAL_KEY = 'df88ba4f44a5ed712dd0a71f1b3d877c';
 
