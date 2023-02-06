@@ -25,6 +25,7 @@
   top: 20px;
   z-index: 2;
   background-color: #ffffff;
+  transform: translate(-50%, 0%);
 
   @media (min-width: 768px) {
     top: 219px;
@@ -33,12 +34,14 @@
     max-height: 552px;
     flex-direction: row;
     gap: 68px;
+    transform: translate(-50%, 0%);
   }
   @media (min-width: 1280px) {
     top: 150px;
     max-width: 806px;
-    padding: 40px 12px;
+    // padding: 40px 12px;
     gap: 16px;
+    transform: translate(-50%, -10%);
   }
 }
 .modal__button-cls {
@@ -68,7 +71,7 @@
   }
 
   @media (min-width: 1280px) {
-    min-width: 375px;
+    min-width: 342px;
     height: 472px;
   }
 }
@@ -134,12 +137,12 @@
   margin-bottom: 20px;
 
   @media (max-width: 768px) {
-    min-height: 236px;
+    // min-height: 236px;
   }
 
   @media (min-width: 768px) {
     max-height: 236px;
-    overflow: auto;
+    // overflow: auto;
   }
 
   @media (min-width: 1280px) {
