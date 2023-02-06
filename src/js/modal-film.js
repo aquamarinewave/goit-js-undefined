@@ -67,7 +67,7 @@ export default function onModalOpen() {
 
 }
 */
-
+/*
 function onEcsclick(e) {
     if (e.key === "Escape") {
         onModalClose();
@@ -83,6 +83,6 @@ function onBackdropClick(e) {
         overlay.removeEventListener("click", this);
     }
 }
-
+*/
 
 

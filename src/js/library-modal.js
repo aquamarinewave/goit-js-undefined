@@ -75,7 +75,7 @@ function refreshBtns() {
 }
 
 function getMovieModal() {
-  const movie = {
+  return {
     id: getModalFilmId(),
     title: refsM.title.textContent,
     posterURL: refsM.poster.src,
@@ -87,6 +87,4 @@ function getMovieModal() {
     popularity: refsM.popularity.textContent,
     original: refsM.original.textContent,
   };
-
-  return movie;
 }
