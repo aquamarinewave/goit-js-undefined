@@ -44,31 +44,37 @@ $color_active_button: #ff6b01;
 
   width: 130px;
   height: 44px;
-  border: 1px solid $color_white;
-  border-radius: 5px;
+  // border: 1px solid $color_white;
+  
+  // border-radius: 5px;
   &:first-child {
     margin-right: 20px;
   }
-  &:hover {
-    background-color: $color_active_button;
-    border: 1px solid $color_active_button;
-  }
+  // &:hover {
+  //   background-color: $color_active_button;
+  //   border: 1px solid $color_active_button;
+  // }
   @media screen and (min-width: 321px) {
     margin: 0 auto;
     width: 152px;
     height: 44px;
   }
 }
-.buttons__item button {
+
+.btn-library {
+  width: 100%;
+
   display: inline-block;
   padding: 12px 0px;
   background-color: $transparent_color;
   border: none;
   color: $color_white;
   text-transform: uppercase;
-}
 
-.btn-library.is-active {
+  border: 1px solid $color_white;
+  border-radius: 5px;
+  &.is-active{
   background-color: $color_active_button;
   border: 1px solid $color_active_button;
+  }
 }
