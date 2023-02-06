@@ -1,7 +1,7 @@
 // variable
-$color_active_button: #FF6B01;
-// background img and button style 
-.headar-library__contaiter{
+$color_active_button: #ff6b01;
+// background img and button style
+.headar-library__contaiter {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -19,7 +19,6 @@ $color_active_button: #FF6B01;
       (min-resolution: 2dppx) {
       background-image: url('/src/images/headerlibraryimg/rectanglepx768x2.png');
     }
-    
   }
   @media screen and (min-width: 1280px) {
     background-image: url('/src/images/headerlibraryimg/rectanglepx1200x1.png');
@@ -30,27 +29,27 @@ $color_active_button: #FF6B01;
     }
   }
 }
-.buttons__list{
+.buttons__list {
   list-style: none;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   padding-inline-start: 0px;
   @media screen and (min-width: 321px) {
     margin: 0 auto;
     max-width: 337px;
   }
 }
-.buttons__item{
+.buttons__item {
   text-align: center;
-  
+
   width: 130px;
   height: 44px;
   border: 1px solid $color_white;
   border-radius: 5px;
-  &:first-child{
+  &:first-child {
     margin-right: 20px;
   }
-  &:hover{
+  &:hover {
     background-color: $color_active_button;
     border: 1px solid $color_active_button;
   }
@@ -60,11 +59,16 @@ $color_active_button: #FF6B01;
     height: 44px;
   }
 }
-.buttons__item button{
+.buttons__item button {
   display: inline-block;
   padding: 12px 0px;
   background-color: $transparent_color;
   border: none;
   color: $color_white;
   text-transform: uppercase;
+}
+
+.btn-library.is-active {
+  background-color: $color_active_button;
+  border: 1px solid $color_active_button;
 }
