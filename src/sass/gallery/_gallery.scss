@@ -2,7 +2,6 @@
 .gallery {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: var(--container-bg);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -31,6 +30,11 @@
 .cont_gallery {
 padding-left: 0px;
 padding-right: 0px;
+}
+
+// Gallery background
+.gallery-bg {
+background-color: var(--container-bg);
 }
 
 
