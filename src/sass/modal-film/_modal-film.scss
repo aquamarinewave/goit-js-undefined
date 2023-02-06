@@ -35,13 +35,11 @@
     max-height: 552px;
     flex-direction: row;
     gap: 68px;
-    transform: translate(-50%, 0%);
   }
   @media (min-width: 1280px) {
     max-width: 806px;
     // padding: 40px 12px;
     gap: 16px;
-    transform: translate(-50%, -10%);
   }
 }
 .modal__button-cls {
