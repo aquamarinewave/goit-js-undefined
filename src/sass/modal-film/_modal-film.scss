@@ -40,15 +40,15 @@
     gap: 68px;
   }
   @media (min-width: 1280px) {
-    max-width: 806px;
-    // padding: 40px 12px;
+    max-width: 704px;
+    padding: 40px 12px;
     gap: 16px;
   }
 }
-.modal__section{
-  display: flex;
-  
+.modal__is-open{
+  overflow: hidden;
 }
+
 .modal__button-cls {
   z-index: 3;
   position: absolute;
@@ -157,7 +157,7 @@ z-index: 4;
 
   @media (min-width: 768px) {
     max-height: 236px;
-    // overflow: auto;
+    overflow: auto;
   }
 
   @media (min-width: 1280px) {
