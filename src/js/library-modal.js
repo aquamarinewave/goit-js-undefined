@@ -1,28 +1,41 @@
 import myLibs from './library-service';
 
-const refsM = {
-  btnWatched: document.querySelector('.modal__button--watched'),
-  btnQueue:   document.querySelector('.modal__button--queue'),
-  infoId:     document.querySelector('.modal__information'),
-  title:      document.querySelector('.modal__title'),
-  poster:     document.querySelector('.modal__image'),
-  overview:   document.querySelector('.modal__text'),
-};
+let refsM;
 
-if (Object.values(refsM).some(el => !el)) {
-  throw new Error('Invalid markup of modal window!');
+export function initModal() {
+  refsM = {
+    btnWatched: document.querySelector('.modal__button--watched'),
+    btnQueue: document.querySelector('.modal__button--queue'),
+    infoId: document.querySelector('.modal__information'),
+    title: document.querySelector('.modal__title'),
+    poster: document.querySelector('.modal__image'),
+    genres: document.querySelector('.modal__genres'),
+    year: document.querySelector('.modal__year'),
+    vote: document.querySelector('.modal__vote'),
+    votes: document.querySelector('.modal__votes'),
+    popularity: document.querySelector('.modal__popularity'),
+    original: document.querySelector('.modal__original'),
+    overview: document.querySelector('.modal__text'),
+  };
+
+  if (Object.values(refsM).some(el => !el)) {
+    console.error('Error: invalid markup of modal window!');
+  }
+
+  refsM.btnWatched.addEventListener('click', onModalLibraryClick.bind(null, "watched"));
+  refsM.btnQueue.addEventListener('click', onModalLibraryClick.bind(null, "queue"));
+
+  refreshBtns();
+
+  return refsM;
 }
 
-refsM.btnWatched.addEventListener('click', onModalLibraryClick.bind(null, "watched"));
-refsM.btnQueue.addEventListener('click', onModalLibraryClick.bind(null, "queue"));
-
 function getModalFilmId() {
-  //return refsM.infoId.dataset.filmid;
-  return '5';   // !?! - заглушка, убрать
+  return refsM.infoId.dataset.filmid;
 }
 
 function onModalLibraryClick(libName) {
-  const movieId = getModalFilmId();
+  const movieId = getModalFilmId(); 
 
   if (!movieId) {
     return;
@@ -67,14 +80,12 @@ function getMovieModal() {
     title: refsM.title.textContent,
     posterURL: refsM.poster.src,
     overview: refsM.overview.textContent,
-    /* !?! - доделать когда будет разметка
-    genres: 'Drama, Comedy',
-    year: 2022,
-    vote: '5.7',
-    votes: '1234',
-    popularity: '100.2',
-    original: `Avatar: The Way of Water`,
-    */
+    genres: refsM.genres.textContent,
+    year: refsM.year.textContent,
+    vote: refsM.vote.textContent,
+    votes: refsM.votes.textContent,
+    popularity: refsM.popularity.textContent,
+    original: refsM.original.textContent,
   };
 
   return movie;
