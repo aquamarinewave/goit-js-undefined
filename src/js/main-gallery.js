@@ -4,10 +4,7 @@ import {startPagination, setingsForPagination} from './pagination'
 import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results'; 
 const mainGallery = document.querySelector(".gallery"); 
  
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const GLOBAL_KEY = 'df88ba4f44a5ed712dd0a71f1b3d877c';
-
- async function getGenresAPI() {
+async function getGenresAPI() {
   const response = await axios.get(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=df88ba4f44a5ed712dd0a71f1b3d877c&language=en-US`
   );
