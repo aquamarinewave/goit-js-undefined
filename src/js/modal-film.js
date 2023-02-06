@@ -4,7 +4,7 @@ const modalButtonClose = document.querySelector(".modal__button-cls");
 const overlay = document.querySelector(".overlay")
     console.log(overlay)
 
-const modalButtonOpen = document.querySelector(".movie-card")
+const modalButtonOpen = document.querySelector(".js-modal-container")
         console.log(modalButtonOpen)
 
 modalButtonClose.addEventListener("click", onModalClose);
