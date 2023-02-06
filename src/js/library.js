@@ -24,18 +24,18 @@ refs.btnQueue.addEventListener('click', onBtnLibraryClick);
 
 function onBtnLibraryClick(evt) {
   const curBtn = evt.currentTarget;
-  if (((curBtn == refs.btnWatched) && (myLib == myLibs.watched)) ||
-      ((curBtn == refs.btnQueue) && (myLib == myLibs.queue))) {
+  if (((curBtn === refs.btnWatched) && (myLib === myLibs.watched)) ||
+      ((curBtn === refs.btnQueue) && (myLib === myLibs.queue))) {
     return;
   }
 
   page = 1;
 
-  if (curBtn == refs.btnWatched) {
+  if (curBtn === refs.btnWatched) {
     myLib = myLibs.watched;
     refs.btnWatched.classList.add('is-active');
     refs.btnQueue.classList.remove('is-active');
-  } else if (curBtn == refs.btnQueue) {
+  } else if (curBtn === refs.btnQueue) {
     myLib = myLibs.queue;
     refs.btnWatched.classList.remove('is-active');
     refs.btnQueue.classList.add('is-active');
@@ -66,7 +66,7 @@ const observer = new IntersectionObserver(onObserve, observerOpts);
 
 function showLibrary() {
 
-  if ((page == 1) && (myLib.getCount() > 0)) {
+  if ((page === 1) && (myLib.getCount() > 0)) {
     refs.gallery.innerHTML = '';
   }
 
@@ -74,9 +74,9 @@ function showLibrary() {
 
   refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(movies));
 
-  if ((page == 1) && (myLib.getCountPages(per_page) > 1)) {
+  if ((page === 1) && (myLib.getCountPages(per_page) > 1)) {
     observer.observe(refs.guardDiv);
-  } else if (page == myLib.getCountPages(per_page)) {
+  } else if (page === myLib.getCountPages(per_page)) {
     observer.unobserve(refs.guardDiv);
   }
 }
@@ -106,7 +106,8 @@ refsM.btnWatched.addEventListener('click', onModalLibraryClick.bind(null, "watch
 refsM.btnQueue.addEventListener('click', onModalLibraryClick.bind(null, "queue"));
 
 function getModalFilmId() {
-  return refsM.infoId.dataset.filmid;
+  //return refsM.infoId.dataset.filmid;
+  return '5';   // !?! - заглушка, убрать
 }
 
 function onModalLibraryClick(libName) {
@@ -122,6 +123,10 @@ function onModalLibraryClick(libName) {
     const movie = getMovieModal();
     myLibs[libName].addMovie(movie);
   }
+
+  page = 1;
+  showLibrary();
+
   refreshBtns();
 }
 
@@ -134,24 +139,24 @@ function refreshBtns() {
 
   if (myLibs.watched.getMovieById(movieId)) {
     refsM.btnWatched.textContent = 'REMOVE FROM WATCHED';
-    refsM.btnWatched.classList.remove("active");
+    refsM.btnWatched.classList.remove("js-active");
   } else {
     refsM.btnWatched.textContent = 'ADD TO WATCHED';
-    refsM.btnWatched.classList.add("active");
+    refsM.btnWatched.classList.add("js-active");
   }
 
   if (myLibs.queue.getMovieById(movieId)) {
     refsM.btnQueue.textContent = 'REMOVE FROM QUEUE';
-    refsM.btnQueue.classList.remove("active");
+    refsM.btnQueue.classList.remove("js-active");
   } else {
     refsM.btnQueue.textContent = 'ADD TO QUEUE';
-    refsM.btnQueue.classList.add("active");
+    refsM.btnQueue.classList.add("js-active");
   }
 }
 
 function getMovieModal() {
   const movie = {
-    id: movieId,
+    id: getModalFilmId(),
     title: refsM.title.textContent,
     posterURL: refsM.poster.src,
     overview: refsM.overview.textContent,

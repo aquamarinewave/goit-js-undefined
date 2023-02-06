@@ -44,15 +44,15 @@ export default class MoviesLibrary {
   }
 
   getMovieById(movieId) {
-    return this.#movies.find(el => el.id == movieId);
+    return this.#movies.find(el => el.id === movieId);
   }
 
   getCountPages(per_page) {
     return Math.ceil(this.#movies.length / per_page);
   }
 
-  getMoviesPage(page = 1, per_page = -1) {     // per_page == -1 - get all library, without pagination
-    if (per_page == -1) {
+  getMoviesPage(page = 1, per_page = -1) {     // per_page === -1 - get all library, without pagination
+    if (per_page === -1) {
       return this.#movies;
     } else {
       return this.#movies.slice((page - 1) * per_page, page * per_page);
@@ -69,8 +69,8 @@ export default class MoviesLibrary {
   }
 
   addMovie(movie) {
-    const indexId = this.#movies.findIndex(el => el.id == movie.id);
-    if (indexId != -1) {
+    const indexId = this.#movies.findIndex(el => el.id === movie.id);
+    if (indexId !== -1) {
       this.#movies[indexId] = movie;
     } else {
       this.#movies.push(movie);
@@ -79,8 +79,8 @@ export default class MoviesLibrary {
   }
 
   removeMovie(movieId) {
-    const indexId = this.#movies.findIndex(el => el.id == movieId);
-    if (indexId != -1) {
+    const indexId = this.#movies.findIndex(el => el.id === movieId);
+    if (indexId !== -1) {
       this.#movies.splice(indexId, 1);
       this.#saveMovies();
     }
