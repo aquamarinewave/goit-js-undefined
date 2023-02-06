@@ -1,22 +1,22 @@
 import MoviesLibrary from './library-api';
 
 const myLibs = {
-  watched: new MoviesLibrary('Watched_Test'),    // !?! - удалить _Test при деплое
-  queue:   new MoviesLibrary('Queue_Test')
+  watched: new MoviesLibrary('Watched'),    // !?! - удалить _Test при деплое
+  queue:   new MoviesLibrary('Queue')
 }
 
 export default myLibs;
 
 
 // !?! Тестовое наполнение - удалить при деплое
-
+/*
 for (const key of ['watched', 'queue']) {
   const myLib = myLibs[key];
   myLib.clearMovies();
   for (let i = 0; i < 20; i += 1) {
     myLib.addMovie({
       id: String(i + 1),
-      title: `Avatar: The Way of Water (${key})`,
+      title: `Avatar: ${i+1} (${key})`,
       posterURL: (key == 'watched') ? 'https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg' :
         'https://image.tmdb.org/t/p/w500/sfCmTkVVtwoW4yNu1Cs4ZDtCTa5.jpg',
       genres: 'Drama, Comedy',
@@ -32,4 +32,4 @@ for (const key of ['watched', 'queue']) {
   }
 }
 // ------------------------------
-
+*/
