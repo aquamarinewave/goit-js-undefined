@@ -22,13 +22,14 @@
   padding: 48px 20px 40px;
   min-height: 250px;
   position: absolute;
-  top: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   background-color: #ffffff;
   transform: translate(-50%, 0%);
 
   @media (min-width: 768px) {
-    top: 219px;
     max-width: 704px;
     padding: 40px 71px 40px 36px;
     max-height: 552px;
@@ -37,7 +38,6 @@
     transform: translate(-50%, 0%);
   }
   @media (min-width: 1280px) {
-    top: 150px;
     max-width: 806px;
     // padding: 40px 12px;
     gap: 16px;
