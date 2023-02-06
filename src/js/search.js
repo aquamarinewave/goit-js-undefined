@@ -7,7 +7,7 @@ const gallery = document.querySelector('.gallery');
 
 function onSearch(e) {
   e.preventDefault();
-  query = e.currentTarget.elements[0].value.trim().toLowerCase();
+  let query = e.currentTarget.elements[0].value.trim().toLowerCase();
   let page = 1;
 
   getSearchMovieAPI(query, page)
@@ -22,4 +22,5 @@ function onSearch(e) {
       }
     })
     .catch(err => console.log(err));
+  e.currentTarget.reset();
 }

@@ -24,4 +24,4 @@ async function getMovieInformationForIdAPI(id) {
   return response.data;
 }
 
-export { getTrendingAPI, getSearchMovieAPI, getMovieInformationForIdAPI };
+export { getTrendingAPI, getSearchMovieAPI, getMovieInformationForIdAPI, BASE_URL, GLOBAL_KEY };

@@ -1,6 +1,9 @@
 import axios from 'axios'; 
-import { getTrendingAPI, } from './show-results'; 
-
+import { getTrendingAPI } from './show-results'; 
+import {startPagination, setingsForPagination} from './pagination'
+import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results'; 
+const mainGallery = document.querySelector(".gallery"); 
+ 
 const mainGallery = document.querySelector(".gallery"); 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const GLOBAL_KEY = 'df88ba4f44a5ed712dd0a71f1b3d877c';
@@ -18,15 +21,11 @@ const GLOBAL_KEY = 'df88ba4f44a5ed712dd0a71f1b3d877c';
   getGenresAPI()
  const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
 
-
-
-
-
  function rederMainPage(data) { 
   const imageURL = "https://image.tmdb.org/t/p/w500"; 
    let markup = data.results.map(({ poster_path, title, release_date, genre_ids }) => 
      `<li class="movie-card"> 
-     <a  href=''><img  src=${imageURL}${poster_path} alt=${title} loading="lazy" height=574px width=395px /></a> 
+     <a  href=''><img src=${imageURL}${poster_path} alt=${title} loading="lazy" height=574px width=395px /></a> 
     <p class="info-item"> 
       <b> ${title}</b> 
     </p> 
@@ -44,13 +43,12 @@ const GLOBAL_KEY = 'df88ba4f44a5ed712dd0a71f1b3d877c';
   mainGallery.innerHTML = markup; 
 } 
  
-async function fetchHandler() { 
-  
-  getTrendingAPI().then(results => rederMainPage(results)); 
+export async function fetchHandler(pages) { 
+  const { page, total_results: totalItems } = await getTrendingAPI(pages);
+  startPagination({ page, totalItems });
+  setingsForPagination.typePagination = 'getTrendingAPI';
+  getTrendingAPI(pages).then(results => rederMainPage(results)); 
 } 
  
 fetchHandler()
-
-
-
 

@@ -3,21 +3,24 @@
 @import './base/base';
 @import './base/resets';
 
-// gallery
-@import './gallery/gallery';
-
 // utilits
 @import './utilits/common';
 @import './utilits/vars';
 @import './utilits/visually-hidden';
-@import './base/modal-film';
 
 // elements
 @import './film-card/film-card';
+@import './modal-film/modal-film';
+
+//Headers
+@import './header-headerlibrary/header';
+@import './header-headerlibrary/headerlibrary';
+
+// gallery
+@import './gallery/gallery';
+
+// Pagination
+@import './pagination/pagination';
 
 // Footer
 @import './footer/footer';
-
-//Headers
-@import './header';
-@import './headerlibrary';
