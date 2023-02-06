@@ -55,11 +55,8 @@ fetchHandler()
 
 // ----------  MODAL  ----------
 
-  //  let markup = data.results.map(({ id, poster_path, title, release_date, genre_ids }) => 
-  //    `<li class="movie-card card" data-filmId="${id}"> 
-
 const refs = {
-  gallery:    document.querySelector('.gallery'),
+  gallery: document.querySelector('.gallery'),
   overlay: document.querySelector('.overlay'),
   btnModalClose: document.querySelector(".modal__button-cls"),
   modalContent: document.querySelector(".modal__content"),
@@ -84,6 +81,7 @@ function onGalleryClick(evt) {
 
   getMovieInformationForIdAPI(filmId)
     .then(data => {
+
       const imageURL = "https://image.tmdb.org/t/p/w500";
       const movie = {
         id: data.id,
@@ -103,13 +101,29 @@ function onGalleryClick(evt) {
       initModal();
 
       refs.overlay.classList.remove('visually-hidden');
-
+      document.body.classList.add("modal__is-open");
+      document.addEventListener('keydown', onKeyDown);
+      refs.overlay.addEventListener("click", onBackdropClick);
     })
     .catch(console.error);
 }
 
 function onModalClose() {
   refs.overlay.classList.add("visually-hidden");
+  document.body.classList.remove("modal__is-open");
 }
 
+function onKeyDown(evt) {
+    if (evt.key === "Escape") {
+        onModalClose();
+        document.removeEventListener("keydown", onKeyDown);
+    }
+} 
+
+function onBackdropClick(evt) {
+    if (evt.currentTarget === evt.target) {
+        onModalClose();
+        refs.overlay.removeEventListener("click", onBackdropClick);
+    }
+}
 // ----------  END OF MODAL  ----------

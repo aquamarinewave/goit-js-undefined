@@ -120,10 +120,29 @@ function onGalleryClick(evt) {
   initModal();
 
   refs.overlay.classList.remove('visually-hidden');
+  document.body.classList.add("modal__is-open");
+  document.addEventListener('keydown', onKeyDown);
+  refs.overlay.addEventListener("click", onBackdropClick);
 }
 
 function onModalClose() {
   refs.overlay.classList.add("visually-hidden");
+  document.body.classList.remove("modal__is-open");
+
   page = 1;
   showLibrary();
+}
+
+function onKeyDown(evt) {
+    if (evt.key === "Escape") {
+        onModalClose();
+        document.removeEventListener("keydown", onKeyDown);
+    }
+} 
+
+function onBackdropClick(evt) {
+    if (evt.currentTarget === evt.target) {
+        onModalClose();
+        refs.overlay.removeEventListener("click", onBackdropClick);
+    }
 }
