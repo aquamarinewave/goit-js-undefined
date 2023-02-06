@@ -17,7 +17,8 @@ for (const key of ['watched', 'queue']) {
     myLib.addMovie({
       id: String(i + 1),
       title: `Avatar: The Way of Water (${key})`,
-      posterURL: 'https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
+      posterURL: (key == 'watched') ? 'https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg' :
+        'https://image.tmdb.org/t/p/w500/sfCmTkVVtwoW4yNu1Cs4ZDtCTa5.jpg',
       genres: 'Drama, Comedy',
       year: '2022',
       vote: '5.7',

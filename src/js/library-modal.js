@@ -1,6 +1,6 @@
 import myLibs from './library-service';
 
-const refs = {
+const refsM = {
   btnWatched: document.querySelector('.modal__button--watched'),
   btnQueue:   document.querySelector('.modal__button--queue'),
   infoId:     document.querySelector('.modal__information'),
@@ -9,54 +9,64 @@ const refs = {
   overview:   document.querySelector('.modal__text'),
 };
 
-if (Object.values(refs).some(el => !el)) {
-  throw new Error('Invalid markup!');
+if (Object.values(refsM).some(el => !el)) {
+  throw new Error('Invalid markup of modal window!');
 }
 
-refs.btnWatched.addEventListener('click', onBtnLibraryClick.bind(null, "watched"));
-refs.btnQueue.addEventListener('click', onBtnLibraryClick.bind(null, "queue"));
+refsM.btnWatched.addEventListener('click', onModalLibraryClick.bind(null, "watched"));
+refsM.btnQueue.addEventListener('click', onModalLibraryClick.bind(null, "queue"));
 
-const movieId = refs.infoId.dataset.filmid;
-
-if (!movieId) {
-  throw new Error('Invalid markup - missed attribute data-filmid!');
+function getModalFilmId() {
+  //return refsM.infoId.dataset.filmid;
+  return '5';   // !?! - заглушка, убрать
 }
 
-function onBtnLibraryClick(libName) {
-  const myLib = myLibs[libName];
-  if (myLib.getMovieById(movieId)) {
-    myLib.removeMovie(movieId);
+function onModalLibraryClick(libName) {
+  const movieId = getModalFilmId();
+
+  if (!movieId) {
+    return;
+  }
+
+  if (myLibs[libName].getMovieById(movieId)) {
+    myLibs[libName].removeMovie(movieId);
   } else {
     const movie = getMovieModal();
-    myLib.addMovie(movie);
+    myLibs[libName].addMovie(movie);
   }
   refreshBtns();
 }
 
 function refreshBtns() {
+  const movieId = getModalFilmId();
+
+  if (!movieId) {
+    return;
+  }
+
   if (myLibs.watched.getMovieById(movieId)) {
-    refs.btnWatched.textContent = 'REMOVE FROM WATCHED';
-    refs.btnWatched.classList.add("active");
+    refsM.btnWatched.textContent = 'REMOVE FROM WATCHED';
+    refsM.btnWatched.classList.remove("js-active");
   } else {
-    refs.btnWatched.textContent = 'ADD TO WATCHED';
-    refs.btnWatched.classList.remove("active");
+    refsM.btnWatched.textContent = 'ADD TO WATCHED';
+    refsM.btnWatched.classList.add("js-active");
   }
 
   if (myLibs.queue.getMovieById(movieId)) {
-    refs.btnQueue.textContent = 'REMOVE FROM QUEUE';
-    refs.btnQueue.classList.add("active");
+    refsM.btnQueue.textContent = 'REMOVE FROM QUEUE';
+    refsM.btnQueue.classList.remove("js-active");
   } else {
-    refs.btnQueue.textContent = 'ADD TO QUEUE';
-    refs.btnQueue.classList.remove("active");
+    refsM.btnQueue.textContent = 'ADD TO QUEUE';
+    refsM.btnQueue.classList.add("js-active");
   }
 }
 
 function getMovieModal() {
   const movie = {
-    id: movieId,
-    title: refs.title.textContent,
-    posterURL: refs.poster.src,
-    overview: refs.overview.textContent,
+    id: getModalFilmId(),
+    title: refsM.title.textContent,
+    posterURL: refsM.poster.src,
+    overview: refsM.overview.textContent,
     /* !?! - доделать когда будет разметка
     genres: 'Drama, Comedy',
     year: 2022,
@@ -69,5 +79,3 @@ function getMovieModal() {
 
   return movie;
 }
-
-refreshBtns();

@@ -1,9 +1,22 @@
 import axios from 'axios'; 
-//import { getTrendingAPI } from './show-results'; 
+import { getTrendingAPI } from './show-results'; 
+import {startPagination, setingsForPagination} from './pagination'
 import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results'; 
 const mainGallery = document.querySelector(".gallery"); 
  
-const savedGenres = JSON.parse(localStorage.getItem('allGenres')); 
+async function getGenresAPI() {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=df88ba4f44a5ed712dd0a71f1b3d877c&language=en-US`
+  );
+  const savedGenres = Object.fromEntries(
+    response.data.genres.map(genre => [genre.id, genre.name])
+  );
+  localStorage.setItem('allGenres', JSON.stringify(savedGenres));
+  
+}
+  getGenresAPI()
+ const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
+
  function rederMainPage(data) { 
   const imageURL = "https://image.tmdb.org/t/p/w500"; 
    let markup = data.results.map(({ poster_path, title, release_date, genre_ids }) => 
@@ -13,7 +26,8 @@ const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
       <b> ${title}</b> 
     </p> 
     <p class="card__additional-information"> 
-        ${genre_ids 
+        ${genre_ids.map(id => savedGenres[id])
+          .join(', ') 
           } | ${release_date.slice(0, 4)} 
         </p> 
      </li> 
@@ -25,8 +39,12 @@ const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
   mainGallery.innerHTML = markup; 
 } 
  
-async function fetchHandler() { 
-  getTrendingAPI().then(results => rederMainPage(results)); 
+export async function fetchHandler(pages) { 
+  const { page, total_results: totalItems } = await getTrendingAPI(pages);
+  startPagination({ page, totalItems });
+  setingsForPagination.typePagination = 'getTrendingAPI';
+  getTrendingAPI(pages).then(results => rederMainPage(results)); 
 } 
  
 fetchHandler()
+
