@@ -1,2 +1,0 @@
-const modalButtonClose=document.querySelector(".modal__button-cls"),overlay=document.querySelector(".overlay"),modalButtonOpen=document.querySelector(".js-modal-container");function onModalClose(){overlay.classList.add("visually-hidden")}function onModalOpen(){overlay.classList.remove("visually-hidden")}modalButtonClose.addEventListener("click",onModalClose),modalButtonOpen.addEventListener("click",onModalOpen);
-//# sourceMappingURL=library.b2e43964.js.map
