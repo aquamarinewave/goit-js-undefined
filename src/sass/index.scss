@@ -10,9 +10,14 @@
 @import './utilits/common';
 @import './utilits/vars';
 @import './utilits/visually-hidden';
+@import './base/modal-film';
 
 // elements
 @import './film-card/film-card';
 
 // Footer
 @import './footer/footer';
+
+//Headers
+@import './header';
+@import './headerlibrary';
