@@ -1,9 +1,12 @@
 import myLibs from './library-service';
 
 let refsM;
+let handlerAfterClose;
 
-export function initModal() {
+export function openMovieModal(onAfterClose = null) {
   refsM = {
+    overlay: document.querySelector('.overlay'),
+    btnModalClose: document.querySelector(".modal__button-cls"),
     btnWatched: document.querySelector('.modal__button--watched'),
     btnQueue: document.querySelector('.modal__button--queue'),
     infoId: document.querySelector('.modal__information'),
@@ -22,10 +25,19 @@ export function initModal() {
     console.error('Error: invalid markup of modal window!');
   }
 
+  handlerAfterClose = onAfterClose;
+
+  refsM.btnModalClose.addEventListener("click", onModalClose);
+  refsM.overlay.addEventListener("click", onBackdropClick);
+  document.addEventListener('keydown', onKeyDown);
+
   refsM.btnWatched.addEventListener('click', onModalLibraryClick.bind(null, "watched"));
   refsM.btnQueue.addEventListener('click', onModalLibraryClick.bind(null, "queue"));
-
+  
   refreshBtns();
+
+  refsM.overlay.classList.remove('visually-hidden');
+  document.body.classList.add("modal__is-open");
 
   return refsM;
 }
@@ -44,8 +56,7 @@ function onModalLibraryClick(libName) {
   if (myLibs[libName].getMovieById(movieId)) {
     myLibs[libName].removeMovie(movieId);
   } else {
-    const movie = getMovieModal();
-    myLibs[libName].addMovie(movie);
+    myLibs[libName].addMovie(getMovieModal());
   }
   refreshBtns();
 }
@@ -87,4 +98,27 @@ function getMovieModal() {
     popularity: refsM.popularity.textContent,
     original: refsM.original.textContent,
   };
+}
+
+function onModalClose() {
+  refsM.overlay.classList.add("visually-hidden");
+  document.body.classList.remove("modal__is-open");
+  
+  if (handlerAfterClose) { 
+    handlerAfterClose();
+  }
+}
+
+function onKeyDown(evt) {
+    if (evt.key === "Escape") {
+        onModalClose();
+        document.removeEventListener("keydown", onKeyDown);
+    }
+} 
+
+function onBackdropClick(evt) {
+    if (evt.currentTarget === evt.target) {
+        onModalClose();
+        refsM.overlay.removeEventListener("click", onBackdropClick);
+    }
 }

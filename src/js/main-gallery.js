@@ -4,7 +4,7 @@ import {startPagination, setingsForPagination} from './pagination'
 import {getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results'; 
 
 import createModalMarkup from './modal-film';
-import { initModal } from './library-modal';
+import { openMovieModal } from './library-modal';
 
 const mainGallery = document.querySelector(".gallery"); 
  
@@ -55,19 +55,9 @@ fetchHandler()
 
 // ----------  MODAL  ----------
 
-const refs = {
-  gallery: document.querySelector('.gallery'),
-  overlay: document.querySelector('.overlay'),
-  btnModalClose: document.querySelector(".modal__button-cls"),
-  modalContent: document.querySelector(".modal__content"),
-};
+const modalContent = document.querySelector(".modal__content");
 
-if (Object.values(refs).some(el => !el)) {
-  console.error('Error: invalid markup!');
-}
-
-refs.btnModalClose.addEventListener("click", onModalClose);
-refs.gallery.addEventListener("click", onGalleryClick);
+mainGallery.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(evt) {
 
@@ -96,34 +86,10 @@ function onGalleryClick(evt) {
         original: data.original_title,
       };
 
-      refs.modalContent.innerHTML = createModalMarkup(movie);
+      modalContent.innerHTML = createModalMarkup(movie);
 
-      initModal();
-
-      refs.overlay.classList.remove('visually-hidden');
-      document.body.classList.add("modal__is-open");
-      document.addEventListener('keydown', onKeyDown);
-      refs.overlay.addEventListener("click", onBackdropClick);
+      openMovieModal();
+      
     })
     .catch(console.error);
 }
-
-function onModalClose() {
-  refs.overlay.classList.add("visually-hidden");
-  document.body.classList.remove("modal__is-open");
-}
-
-function onKeyDown(evt) {
-    if (evt.key === "Escape") {
-        onModalClose();
-        document.removeEventListener("keydown", onKeyDown);
-    }
-} 
-
-function onBackdropClick(evt) {
-    if (evt.currentTarget === evt.target) {
-        onModalClose();
-        refs.overlay.removeEventListener("click", onBackdropClick);
-    }
-}
-// ----------  END OF MODAL  ----------
