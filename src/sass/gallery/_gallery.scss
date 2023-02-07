@@ -8,6 +8,7 @@
   padding-left: 20px;
   padding-right: 20px;
 
+
   // Tablet
   @media screen and (min-width: 768px) {
     padding-top: 60px;
@@ -39,6 +40,7 @@ background-color: var(--container-bg);
 
 .gallery_pin {
   text-align: center;
+  font-size: 50px;
 }
 
 // Card position
