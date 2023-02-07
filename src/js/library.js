@@ -20,7 +20,7 @@ if (Object.values(refs).some(el => !el)) {
   console.error('Error: invalid markup!');
 }
 
-refs.gallery.insertAdjacentHTML('afterend', `<div class="js-guard"></div>`); 
+refs.gallery.insertAdjacentHTML('afterend', `<div class="js-guard"></div>`);
 refs.guardDiv = document.querySelector('.js-guard');
 
 refs.btnWatched.addEventListener('click', onBtnLibraryClick);
@@ -29,7 +29,7 @@ refs.btnQueue.addEventListener('click', onBtnLibraryClick);
 function onBtnLibraryClick(evt) {
   const curBtn = evt.currentTarget;
   if (((curBtn === refs.btnWatched) && (myLib === myLibs.watched)) ||
-      ((curBtn === refs.btnQueue) && (myLib === myLibs.queue))) {
+    ((curBtn === refs.btnQueue) && (myLib === myLibs.queue))) {
     return;
   }
 
@@ -52,19 +52,19 @@ function onBtnLibraryClick(evt) {
 const observerOpts = {
   root: null,
   rootMargin: '300px',
-  threshold: 1.0
-}
+  threshold: 1.0,
+};
 
 const onObserve = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       if (page < myLib.getCountPages(per_page)) {
         page += 1;
-        showLibrary();  
+        showLibrary();
       }
     }
   });
-}
+};
 
 const observer = new IntersectionObserver(onObserve, observerOpts);
 
@@ -78,7 +78,7 @@ function showLibrary() {
     } 
   }
 
-  const movies = myLib.getMoviesPage(page, per_page); 
+  const movies = myLib.getMoviesPage(page, per_page);
 
   refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(movies));
 
@@ -101,11 +101,11 @@ refs.gallery.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(evt) {
 
-  evt.preventDefault(); 
-  
-  const filmCard = evt.target.closest(".card");
+  evt.preventDefault();
+
+  const filmCard = evt.target.closest('.card');
   if (!filmCard) {
-    return;  
+    return;
   }
   const filmId = filmCard.dataset.filmid;
 
@@ -114,7 +114,7 @@ function onGalleryClick(evt) {
     console.error(`Movie with id = ${filmId} isn't found in library!`);
     return;
   }
-    
+
   refs.modalContent.innerHTML = createModalMarkup(movie);
 
   openMovieModal(onAfterModalClose);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import 'animate.css';
 import { getTrendingAPI, getMovieInformationForIdAPI } from './show-results';
 import { startPagination, setingsForPagination } from './pagination'
 import { getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
@@ -8,7 +9,8 @@ import { openMovieModal } from './library-modal';
 
 const baseImageURL = "https://image.tmdb.org/t/p/w500";
 
-const mainGallery = document.querySelector(".gallery");
+const mainGallery = document.querySelector('.gallery');
+const loader = document.querySelector('.loader');
 
 async function getGenresAPI() {
   const response = await axios.get(
@@ -18,26 +20,21 @@ async function getGenresAPI() {
     response.data.genres.map(genre => [genre.id, genre.name])
   );
   localStorage.setItem('allGenres', JSON.stringify(savedGenres));
-
 }
-getGenresAPI()
+getGenresAPI();
 const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
-
-
 
 export async function fetchHandler(pages) {
   const { page, total_results: totalItems, results } = await getTrendingAPI(pages);
   startPagination({ page, totalItems });
   setingsForPagination.typePagination = 'getTrendingAPI';
 
-
-  
-  
   createFilmCard(results)
   
-  
 }
+
 fetchHandler()
+
 //console.log(data.results)
 function createFilmCard(results) {
   let murkup = results.map(res => 
@@ -52,13 +49,14 @@ function createFilmCard(results) {
     }
   )
   ).join('')
-
+//  loader.hidden = true;
   mainGallery.innerHTML = murkup;
    
   }
   
 // ----------  MODAL  ----------
-
+const loader_modal = document.querySelector('.loader_modal');
+console.log(loader_modal);
 const modalContent = document.querySelector(".modal__content");
 
 mainGallery.addEventListener("click", onGalleryClick);
@@ -66,7 +64,7 @@ mainGallery.addEventListener("click", onGalleryClick);
 function onGalleryClick(evt) {
 
   evt.preventDefault();
-
+  loader_modal.classList.remove('visually-hidden');
   const filmCard = evt.target.closest(".card");
   if (!filmCard) {
     return;
@@ -75,7 +73,6 @@ function onGalleryClick(evt) {
 
   getMovieInformationForIdAPI(filmId)
     .then(data => {
-
       const movie = {
         id: data.id,
         title: data.title,
