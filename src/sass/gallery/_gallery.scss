@@ -37,9 +37,15 @@ padding-right: 0px;
 background-color: var(--container-bg);
 }
 
+.gallery_pin {
+  text-align: center;
+  // justify-content: center;
+
+}
 
 // Card position
 .movie-card {
+  // visibility:hidden;
   max-width: 359px;
   margin: 15px;
   margin-bottom: 32px;
