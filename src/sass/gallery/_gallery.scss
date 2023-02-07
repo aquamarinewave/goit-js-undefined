@@ -26,31 +26,29 @@
   }
 }
 
-
 .cont_gallery {
-padding-left: 0px;
-padding-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 // Gallery background
 .gallery-bg {
-background-color: var(--container-bg);
+  background-color: var(--container-bg);
 }
-
 
 // Card position
 .movie-card {
   max-width: 359px;
   margin: 15px;
   margin-bottom: 32px;
-  flex-basis: calc((100% - 3 * 30px) / 1); 
+  flex-basis: calc((100% - 3 * 30px) / 1);
 
-// Tablet
+  // Tablet
   @media screen and (min-width: 768px) {
-  flex-basis: calc((100% - 3 * 30px) / 2); 
+    flex-basis: calc((100% - 3 * 30px) / 2);
   }
-// Desktop
+  // Desktop
   @media screen and (min-width: 1280px) {
-  flex-basis: calc((100% - 3 * 30px) / 3);
+    flex-basis: calc((100% - 3 * 30px) / 3);
   }
 }
