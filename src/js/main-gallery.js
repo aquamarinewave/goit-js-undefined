@@ -47,7 +47,8 @@ function createFilmCard(results) {
       posterURL: res.poster_path ? `${baseImageURL}${res.poster_path}` : '',
       genres: `${res.genre_ids.map(id => savedGenres[id])
         .join(', ')}`,
-      year: res.release_date.slice(0, 4)
+      year: res.release_date.slice(0, 4),
+      vote: res.vote_average ? res.vote_average.toFixed(1) : '0'
     }
   )
   ).join('')
@@ -82,7 +83,7 @@ function onGalleryClick(evt) {
         overview: data.overview,
         genres: data.genres.map(el => el.name).join(', '),
         year: data.release_date.slice(0, 4),
-        vote: data.vote_average,
+        vote: data.vote_average ? data.vote_average.toFixed(1) : '0',
         votes: data.vote_count,
         popularity: data.popularity,
         original: data.original_title,
