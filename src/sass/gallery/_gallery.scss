@@ -6,6 +6,7 @@
   padding-right: 20px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   // Desktop
   // Tablet
@@ -15,16 +16,13 @@
     padding-left: 32px;
     padding-right: 32px;
     justify-content: space-around;
-    flex-basis: calc((100% - 1 * 32px) / 1);
   }
 
   // Desktop
   @media screen and (min-width: 1280px) {
-    padding-left: 16px;
-    padding-right: 16px;
-    justify-content: flex-start;
-    gap: 16px;
-    flex-basis: calc((100% - 2 * 32px) / 2);
+    padding-left: 32px;
+    padding-right: 32px;
+    justify-content: space-around;
   }
 }
 
@@ -50,5 +48,4 @@
   max-width: 359px;
   margin: 15px;
   margin-bottom: 32px;
-  // flex-basis: calc((100% - 3 * 30px) / 1);
 }
