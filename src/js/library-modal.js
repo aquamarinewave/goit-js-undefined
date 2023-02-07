@@ -3,6 +3,8 @@ import myLibs from './library-service';
 let refsM;
 let handlerAfterClose;
 
+export const noPosterURL = 'https://dummyimage.com/400x500/dbdbdb/000000.png&text=No+poster';
+
 export function openMovieModal(onAfterClose = null) {
   refsM = {
     overlay: document.querySelector('.overlay'),
@@ -89,7 +91,7 @@ function getMovieModal() {
   return {
     id: getModalFilmId(),
     title: refsM.title.textContent,
-    posterURL: refsM.poster.src,
+    posterURL: (refsM.poster.src === noPosterURL) ? '' : refsM.poster.src,
     overview: refsM.overview.textContent,
     genres: refsM.genres.textContent,
     year: refsM.year.textContent,
