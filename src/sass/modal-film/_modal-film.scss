@@ -196,12 +196,12 @@ z-index: 4;
 
 .modal__button--watched {
   
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   min-width: 110px;
 
   @media (min-width: 768px) {
-    padding: 3px 12px 3px 12px;
+    padding: 4px 12px 4px 12px;
    
     min-width: 125px;
     max-width: 125px;
@@ -215,12 +215,12 @@ z-index: 4;
 
 .modal__button--queue {
   min-width: 110px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   
   @media (min-width: 768px) {
     min-width: 125px;
-    padding: 3px 7px 3px 7px;
+    padding: 4px 7px 4px 7px;
   }
   @media (min-width: 1280px) {
     min-width: 136px;
