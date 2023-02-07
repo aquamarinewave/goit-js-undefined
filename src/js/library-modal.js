@@ -110,15 +110,15 @@ function onModalClose() {
 }
 
 function onKeyDown(evt) {
-    if (evt.key === "Escape") {
-        onModalClose();
-        document.removeEventListener("keydown", onKeyDown);
-    }
+  if (evt.key === "Escape") {
+      onModalClose();
+      document.removeEventListener("keydown", onKeyDown);
+  }
 } 
 
 function onBackdropClick(evt) {
-    if (evt.currentTarget === evt.target) {
-        onModalClose();
-        refsM.overlay.removeEventListener("click", onBackdropClick);
-    }
+  if (evt.currentTarget === evt.target) {
+      onModalClose();
+      refsM.overlay.removeEventListener("click", onBackdropClick);
+  }
 }
