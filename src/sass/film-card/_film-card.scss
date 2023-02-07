@@ -1,21 +1,14 @@
-.card-container{
-    max-width: 280px;
-@media screen and(min-width:768px){
-    max-width: 336px;
-}
-@media screen and (min-width:1200px){
-    max-width: 395px;
-}
-}
 
 .card{   
-max-width: 280px;
-@media screen and(min-width:768px){
-    max-width: 336px;
-}
-@media screen and (min-width:1200px){
-    max-width: 395px;
-}
+    flex-basis: 100%;
+    @media screen and(min-width:768px){
+        flex-basis: calc((100% - 64px * (2 - 1)) / 2);
+    }
+    @media screen and (min-width:1280px){
+        flex-basis: calc((100% - 32px * (3 - 1)) / 3);
+        font-size: 20px;
+        line-height: 24px;
+    }
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -23,19 +16,15 @@ max-width: 280px;
     border-radius: 5px;;
 
     color: var(--main-color);
-    @media screen and(min-width:1200px){
-        font-size: 20px;
-        line-height: 24px;
-    }
 }
 
 .card__pic{
     @media screen and(min-width: 768px) {
-        width:336px;
+        width: 336px;
         height: 455px;
     }
-    @media screen and(min-width: 1200px) {
-        width: 395px;
+    @media screen and(min-width: 1280px) {
+        width: 365px;
         height: 574px;
     }
 };
@@ -50,7 +39,7 @@ max-width: 280px;
     margin-top: 8px;
     margin-bottom: 32px;
     }
-    @media screen and(min-width: 1200px) {
+    @media screen and(min-width: 1280px) {
     margin-top: 12px;
     }      
 }
@@ -61,20 +50,10 @@ text-transform: uppercase;
 
 .card__additional-information {
     display: flex;
+    align-items: center;
     color:var(--accent-color);
 };
 
-.card__vl{
-    border-left: 1px solid var(--accent-color);
-    width: 0;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-.card__gener-item{
-    max-width: 280px;
-    max-height: 25px;
-    overflow-y: hidden;
-}
 .card__rating{
     color:#FFFFFF;
     font-size: 12px;
@@ -99,7 +78,7 @@ text-transform: uppercase;
         width: 36px;
         height: 16px;
     }
-    @media screen and(min-width: 1200px) {
+    @media screen and(min-width: 1280px) {
         width: 40px;
         height: 20px;
         padding-left: 12px;
