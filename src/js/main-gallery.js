@@ -49,7 +49,7 @@ function createFilmCard(results) {
     }
   )
   ).join('')
-//  loader.hidden = true;
+ loader.hidden = true;
   mainGallery.innerHTML = murkup;
    
   }
