@@ -9,6 +9,13 @@
 }
 
 .card{   
+max-width: 280px;
+@media screen and(min-width:768px){
+    max-width: 336px;
+}
+@media screen and (min-width:1200px){
+    max-width: 395px;
+}
     font-style: normal;
     font-weight: 500;
     font-size: 12px;

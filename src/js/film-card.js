@@ -1,7 +1,6 @@
 export default
 function createFilmCardMarkup({id, posterURL = '', title = '', genres = 'no info', year = 'no info', votes = '' }) {
-  return ` <div class="card-container">
-    <div class="card" data-filmid="${id}">
+  return ` <li class="card" data-filmid="${id}">
         <img src="${posterURL}" alt="${title}" class="card__pic">
         <div class="card__information">
             <p class="card__film-name">${title}</p>
@@ -16,7 +15,5 @@ function createFilmCardMarkup({id, posterURL = '', title = '', genres = 'no info
                 <div>
             </div>
         </div>
-    </div>
-    </div>
-  `;
+    </li>`;
 }    
