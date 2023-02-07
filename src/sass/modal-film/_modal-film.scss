@@ -46,9 +46,13 @@
   }
 }
 .modal__is-open{
-  overflow: hidden;
+ overflow: hidden;
+// @media (min-width: 768px) {
+//  padding-right: 15px; }
 }
-
+body {
+  padding: 0 calc(15px - (100vw - 100%)) 0 0;
+}
 .modal__button-cls {
   z-index: 3;
   position: absolute;
@@ -76,6 +80,7 @@ z-index: 4;
   min-width: 240px;
   height: 357px;
   margin-bottom: 20px;
+  border-radius: 5px;
   @media (min-width: 768px) {
     min-width: 264px;
     height: 374px;
@@ -175,6 +180,7 @@ z-index: 4;
 }
 
 .modal__button {
+  border: 1px solid black;
   min-width: 110px;
   display: flex;
   align-items: center;
@@ -189,35 +195,47 @@ z-index: 4;
 }
 
 .modal__button--watched {
-  padding: 6px 27px;
+  
+  padding-top: 3px;
+  padding-bottom: 3px;
+  min-width: 110px;
 
   @media (min-width: 768px) {
-    padding: 14px 12px 12px 12px;
-    white-space: nowrap;
+    padding: 3px 12px 3px 12px;
+   
     min-width: 125px;
+    max-width: 125px;
   }
   @media (min-width: 1280px) {
     min-width: 136px;
+    max-width: 136px;
+    padding: 4px 7px 4px 7px;
   }
 }
 
 .modal__button--queue {
+  min-width: 110px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   
-  padding: 13px;
-  white-space: nowrap;
   @media (min-width: 768px) {
     min-width: 125px;
-    padding: 14px 7px 12px 7px;
+    padding: 3px 7px 3px 7px;
   }
   @media (min-width: 1280px) {
     min-width: 136px;
+    max-width: 136px;
+    padding: 4px 7px 4px 7px;
   }
 }
 
 .js-active {
+  
+  white-space: nowrap;
   background-color: var(--accent-color);
   border: none;
   color: #ffffff;
+  padding: 13px;
 }
 .modal__original{
   text-transform: uppercase;
