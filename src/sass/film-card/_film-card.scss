@@ -1,7 +1,6 @@
 .card {
   flex-basis: 100%;
   @media screen and(min-width:768px) {
-    // flex-basis: calc((100% - 64px * (2 - 1)) / 2);
     flex-basis: calc((100% - 32px * (2 - 1)) / 2);
   }
   @media screen and (min-width: 1280px) {
@@ -9,25 +8,27 @@
     font-size: 20px;
     line-height: 24px;
   }
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  border-radius: 5px;
 
   color: var(--main-color);
 }
 
-.card__pic {
+.card__wrapper {
   @media screen and(min-width: 768px) {
-    width: 336px;
     height: 455px;
   }
   @media screen and(min-width: 1280px) {
-    width: 365px;
     height: 574px;
   }
 }
+
+.card__pic {
+  border-radius: 5px;
+  height: 100%;
+}
+
 .card__information {
   display: flex;
   flex-direction: column;
