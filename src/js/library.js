@@ -2,20 +2,18 @@ import myLibs from './library-service';
 import createFilmCardMarkup from './film-card';
 import createModalMarkup from './modal-film';
 
-import { initModal } from './library-modal';
+import { openMovieModal } from './library-modal';
 
 let myLib = myLibs.watched;
 
 let page = 1;
-const per_page = 6; // !?! установить коррект
+const per_page = 9;   
 
 const refs = {
   gallery: document.querySelector('.gallery'),
   btnWatched: document.querySelector('#btn-watched'),
   btnQueue: document.querySelector('#btn-queue'),
-  overlay: document.querySelector('.overlay'),
-  btnModalClose: document.querySelector('.modal__button-cls'),
-  modalContent: document.querySelector('.modal__content'),
+  modalContent: document.querySelector(".modal__content"),
 };
 
 if (Object.values(refs).some(el => !el)) {
@@ -30,10 +28,8 @@ refs.btnQueue.addEventListener('click', onBtnLibraryClick);
 
 function onBtnLibraryClick(evt) {
   const curBtn = evt.currentTarget;
-  if (
-    (curBtn === refs.btnWatched && myLib === myLibs.watched) ||
-    (curBtn === refs.btnQueue && myLib === myLibs.queue)
-  ) {
+  if (((curBtn === refs.btnWatched) && (myLib === myLibs.watched)) ||
+    ((curBtn === refs.btnQueue) && (myLib === myLibs.queue))) {
     return;
   }
 
@@ -73,16 +69,20 @@ const onObserve = (entries, observer) => {
 const observer = new IntersectionObserver(onObserve, observerOpts);
 
 function showLibrary() {
-  //if ((page === 1) && (myLib.getCount() > 0)) {   // !?! - для заглушки пустой библиотеки
-  if (page === 1) {
-    refs.gallery.innerHTML = '';
+
+  if (page === 1) {   
+    if (myLib.getCount() > 0) {
+      refs.gallery.innerHTML = '';
+    } else {  
+      refs.gallery.innerHTML = `<li class="gallery_pin">The library is empty</li>`;
+    } 
   }
 
   const movies = myLib.getMoviesPage(page, per_page);
 
   refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(movies));
 
-  if (page === 1 && myLib.getCountPages(per_page) > 1) {
+  if ((page === 1) && (myLib.getCountPages(per_page) > 1)) {
     observer.observe(refs.guardDiv);
   } else if (page === myLib.getCountPages(per_page)) {
     observer.unobserve(refs.guardDiv);
@@ -97,10 +97,10 @@ showLibrary();
 
 // ----------  MODAL  ----------
 
-refs.btnModalClose.addEventListener('click', onModalClose);
-refs.gallery.addEventListener('click', onGalleryClick);
+refs.gallery.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(evt) {
+
   evt.preventDefault();
 
   const filmCard = evt.target.closest('.card');
@@ -117,32 +117,10 @@ function onGalleryClick(evt) {
 
   refs.modalContent.innerHTML = createModalMarkup(movie);
 
-  initModal();
-
-  refs.overlay.classList.remove('visually-hidden');
-  document.body.classList.add('modal__is-open');
-  document.addEventListener('keydown', onKeyDown);
-  refs.overlay.addEventListener('click', onBackdropClick);
+  openMovieModal(onAfterModalClose);
 }
 
-function onModalClose() {
-  refs.overlay.classList.add('visually-hidden');
-  document.body.classList.remove('modal__is-open');
-
+function onAfterModalClose() {
   page = 1;
   showLibrary();
-}
-
-function onKeyDown(evt) {
-  if (evt.key === 'Escape') {
-    onModalClose();
-    document.removeEventListener('keydown', onKeyDown);
-  }
-}
-
-function onBackdropClick(evt) {
-  if (evt.currentTarget === evt.target) {
-    onModalClose();
-    refs.overlay.removeEventListener('click', onBackdropClick);
-  }
 }

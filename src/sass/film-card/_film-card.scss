@@ -1,4 +1,21 @@
+.card-container{
+    max-width: 280px;
+@media screen and(min-width:768px){
+    max-width: 336px;
+}
+@media screen and (min-width:1200px){
+    max-width: 395px;
+}
+}
+
 .card{   
+max-width: 280px;
+@media screen and(min-width:768px){
+    max-width: 336px;
+}
+@media screen and (min-width:1200px){
+    max-width: 395px;
+}
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -52,6 +69,44 @@ text-transform: uppercase;
     width: 0;
     margin-left: 5px;
     margin-right: 5px;
+}
+.card__gener-item{
+    max-width: 280px;
+    max-height: 25px;
+    overflow-y: hidden;
+}
+.card__rating{
+    color:#FFFFFF;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+.card__rating-background {
+    background-color: #FF6B01;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 36px;
+    height: 16px;
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+    @media screen and(min-width: 768px) {
+        width: 36px;
+        height: 16px;
+    }
+    @media screen and(min-width: 1200px) {
+        width: 40px;
+        height: 20px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }  
 }
 
 

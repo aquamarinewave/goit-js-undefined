@@ -1,11 +1,13 @@
 import axios from 'axios';
 import 'animate.css';
 import { getTrendingAPI, getMovieInformationForIdAPI } from './show-results';
-import { startPagination, setingsForPagination } from './pagination';
+import { startPagination, setingsForPagination } from './pagination'
 import { getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
-
+import createFilmCardMarkup from './film-card';
 import createModalMarkup from './modal-film';
-import { initModal } from './library-modal';
+import { openMovieModal } from './library-modal';
+
+const baseImageURL = "https://image.tmdb.org/t/p/w500";
 
 const mainGallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
@@ -22,64 +24,48 @@ async function getGenresAPI() {
 getGenresAPI();
 const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
 
-function rederMainPage(data) {
-  const imageURL = 'https://image.tmdb.org/t/p/w500';
-
-  let markup = data
-    .map(
-      ({ id, poster_path, title, release_date, genre_ids }) =>
-        `<li class="movie-card card" data-filmId="${id}"> 
-     <a  href=''><img src=${imageURL}${poster_path} alt=${title} loading="lazy" height=574px width=395px /></a> 
-    <p class="info-item"> 
-      <b> ${title}</b> 
-    </p> 
-    <p class="card__additional-information"> 
-        ${genre_ids
-          .map(id => savedGenres[id])
-          .join(', ')} | ${release_date.slice(0, 4)} 
-        </p> 
-     </li> 
-    `
-    )
-    .join('');
-  loader.hidden = true;
-  mainGallery.innerHTML = markup;
-}
-
 export async function fetchHandler(pages) {
-  const {
-    page,
-    total_results: totalItems,
-    results,
-  } = await getTrendingAPI(pages);
+  const { page, total_results: totalItems, results } = await getTrendingAPI(pages);
   startPagination({ page, totalItems });
   setingsForPagination.typePagination = 'getTrendingAPI';
-  rederMainPage(results);
+
+  createFilmCard(results)
+  
 }
 
-fetchHandler();
+fetchHandler()
 
+//console.log(data.results)
+function createFilmCard(results) {
+  let murkup = results.map(res => 
+    createFilmCardMarkup({
+      id: res.id,
+      title:res.title,
+      posterURL: res.poster_path ? `${baseImageURL}${res.poster_path}` : '',
+      genres: `${res.genre_ids.map(id => savedGenres[id])
+        .join(', ')}`,
+      year: res.release_date.slice(0, 4),
+      vote: res.vote_average ? res.vote_average.toFixed(1) : '0'
+    }
+  )
+  ).join('')
+//  loader.hidden = true;
+  mainGallery.innerHTML = murkup;
+   
+  }
+  
 // ----------  MODAL  ----------
 const loader_modal = document.querySelector('.loader_modal');
 console.log(loader_modal);
-const refs = {
-  gallery: document.querySelector('.gallery'),
-  overlay: document.querySelector('.overlay'),
-  btnModalClose: document.querySelector('.modal__button-cls'),
-  modalContent: document.querySelector('.modal__content'),
-};
+const modalContent = document.querySelector(".modal__content");
 
-if (Object.values(refs).some(el => !el)) {
-  console.error('Error: invalid markup!');
-}
-
-refs.btnModalClose.addEventListener('click', onModalClose);
-refs.gallery.addEventListener('click', onGalleryClick);
+mainGallery.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(evt) {
+
   evt.preventDefault();
   loader_modal.classList.remove('visually-hidden');
-  const filmCard = evt.target.closest('.card');
+  const filmCard = evt.target.closest(".card");
   if (!filmCard) {
     return;
   }
@@ -87,48 +73,23 @@ function onGalleryClick(evt) {
 
   getMovieInformationForIdAPI(filmId)
     .then(data => {
-      const imageURL = 'https://image.tmdb.org/t/p/w500';
       const movie = {
         id: data.id,
         title: data.title,
-        posterURL: `${imageURL}${data.poster_path}`,
+        posterURL: data.poster_path ? `${baseImageURL}${data.poster_path}` : '',
         overview: data.overview,
         genres: data.genres.map(el => el.name).join(', '),
         year: data.release_date.slice(0, 4),
-        vote: data.vote_average,
+        vote: data.vote_average ? data.vote_average.toFixed(1) : '0',
         votes: data.vote_count,
         popularity: data.popularity,
         original: data.original_title,
       };
 
-      refs.modalContent.innerHTML = createModalMarkup(movie);
+      modalContent.innerHTML = createModalMarkup(movie);
 
-      initModal();
-
-      refs.overlay.classList.remove('visually-hidden');
-      document.body.classList.add('modal__is-open');
-      document.addEventListener('keydown', onKeyDown);
-      refs.overlay.addEventListener('click', onBackdropClick);
+      openMovieModal();
+      
     })
     .catch(console.error);
 }
-
-function onModalClose() {
-  refs.overlay.classList.add('visually-hidden');
-  document.body.classList.remove('modal__is-open');
-}
-
-function onKeyDown(evt) {
-  if (evt.key === 'Escape') {
-    onModalClose();
-    document.removeEventListener('keydown', onKeyDown);
-  }
-}
-
-function onBackdropClick(evt) {
-  if (evt.currentTarget === evt.target) {
-    onModalClose();
-    refs.overlay.removeEventListener('click', onBackdropClick);
-  }
-}
-// ----------  END OF MODAL  ----------
