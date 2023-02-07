@@ -1,3 +1,4 @@
+import { noPosterURL } from './library-modal';
 
 import sprite from '../images/sprite.svg';
 export default
@@ -11,7 +12,7 @@ function createModalMarkup({ id, posterURL = '', title = '', genres = '', year =
         <use href="${sprite}#icon-close"></use>
       </svg>
     </button>
-      <img class="modal__image" src="${posterURL}" alt="${title}"/>
+      <img class="modal__image" src="${posterURL?posterURL:noPosterURL}" alt="${title}"/>
     </div>
     <div class="modal__information" data-filmid="${id}">
       <h1 class="modal__title">${title}</h1>
