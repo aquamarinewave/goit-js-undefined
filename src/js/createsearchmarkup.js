@@ -18,9 +18,10 @@ function createSearchMarkup(data) {
         genres: `${
           res.genre_ids.length !== 0
             ? res.genre_ids.map(id => savedGenres[id]).join(', ')
-            : 'no info'
+            : ''
         }`,
-        year: res.release_date ? res.release_date.slice(0, 4) : 'no info',
+        year: res.release_date.slice(0, 4),
+        vote: res.vote_average ? res.vote_average.toFixed(1) : '0'
       })
     )
     .join('');
