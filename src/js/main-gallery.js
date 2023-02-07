@@ -6,6 +6,8 @@ import createFilmCardMarkup from './film-card';
 import createModalMarkup from './modal-film';
 import { openMovieModal } from './library-modal';
 
+const baseImageURL = "https://image.tmdb.org/t/p/w500";
+
 const mainGallery = document.querySelector(".gallery");
 
 async function getGenresAPI() {
@@ -38,12 +40,11 @@ export async function fetchHandler(pages) {
 fetchHandler()
 //console.log(data.results)
 function createFilmCard(results) {
-const imageURL = "https://image.tmdb.org/t/p/w500";
   let murkup = results.map(res => 
     createFilmCardMarkup({
       id: res.id,
       title:res.title,
-      posterURL: `${imageURL}${res.poster_path}`,
+      posterURL: res.poster_path ? `${baseImageURL}${res.poster_path}` : '',
       genres: `${res.genre_ids.map(id => savedGenres[id])
         .join(', ')}`,
       year: res.release_date.slice(0, 4)
@@ -74,12 +75,10 @@ function onGalleryClick(evt) {
   getMovieInformationForIdAPI(filmId)
     .then(data => {
 
-      const imageURL = "https://image.tmdb.org/t/p/w500";
       const movie = {
         id: data.id,
         title: data.title,
-        posterURL: data.poster_path ? `${imageURL}${data.poster_path}` :
-                  'https://dummyimage.com/400x500/dbdbdb/000000.png&text=No+poster',
+        posterURL: data.poster_path ? `${baseImageURL}${data.poster_path}` : '',
         overview: data.overview,
         genres: data.genres.map(el => el.name).join(', '),
         year: data.release_date.slice(0, 4),

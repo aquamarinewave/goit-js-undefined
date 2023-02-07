@@ -1,8 +1,10 @@
+import { noPosterURL } from './library-modal';
+
 export default
 function createFilmCardMarkup({id, posterURL = '', title = '', genres = 'no info', year = 'no info', votes = '' }) {
   return ` <div class="card-container">
     <div class="card" data-filmid="${id}">
-        <img src="${posterURL}" alt="${title}" class="card__pic">
+        <img src="${posterURL?posterURL:noPosterURL}" alt="${title}" class="card__pic">
         <div class="card__information">
             <p class="card__film-name">${title}</p>
             <div class="card__additional-information">
