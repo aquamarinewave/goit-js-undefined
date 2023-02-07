@@ -9,6 +9,13 @@
 }
 
 .card{   
+max-width: 280px;
+@media screen and(min-width:768px){
+    max-width: 336px;
+}
+@media screen and (min-width:1200px){
+    max-width: 395px;
+}
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -68,13 +75,13 @@ text-transform: uppercase;
     max-height: 25px;
     overflow-y: hidden;
 }
-.rating{
+.card__rating{
     color:#FFFFFF;
     font-size: 12px;
     margin: 0;
     padding: 0;
 }
-.rating-background {
+.card__rating-background {
     background-color: #FF6B01;
     display: flex;
     justify-content: center;
