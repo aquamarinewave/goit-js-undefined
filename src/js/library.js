@@ -2,19 +2,17 @@ import myLibs from './library-service';
 import createFilmCardMarkup from './film-card';
 import createModalMarkup from './modal-film';
 
-import { initModal } from './library-modal';
+import { openMovieModal } from './library-modal';
 
 let myLib = myLibs.watched;
 
 let page = 1;
-const per_page = 6;   // !?! установить коррект
+const per_page = 9;   
 
 const refs = {
-  gallery:    document.querySelector('.gallery'),
+  gallery: document.querySelector('.gallery'),
   btnWatched: document.querySelector('#btn-watched'),
   btnQueue: document.querySelector('#btn-queue'),
-  overlay: document.querySelector('.overlay'),
-  btnModalClose: document.querySelector(".modal__button-cls"),
   modalContent: document.querySelector(".modal__content"),
 };
 
@@ -72,9 +70,12 @@ const observer = new IntersectionObserver(onObserve, observerOpts);
 
 function showLibrary() {
 
-  //if ((page === 1) && (myLib.getCount() > 0)) {   // !?! - для заглушки пустой библиотеки
-  if (page === 1) {
-    refs.gallery.innerHTML = '';
+  if (page === 1) {   
+    if (myLib.getCount() > 0) {
+      refs.gallery.innerHTML = '';
+    } else {  
+      refs.gallery.innerHTML = `<li class="gallery_pin">The library is empty</li>`;
+    } 
   }
 
   const movies = myLib.getMoviesPage(page, per_page); 
@@ -96,7 +97,6 @@ showLibrary();
 
 // ----------  MODAL  ----------
 
-refs.btnModalClose.addEventListener("click", onModalClose);
 refs.gallery.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(evt) {
@@ -117,13 +117,10 @@ function onGalleryClick(evt) {
     
   refs.modalContent.innerHTML = createModalMarkup(movie);
 
-  initModal();
-
-  refs.overlay.classList.remove('visually-hidden');
+  openMovieModal(onAfterModalClose);
 }
 
-function onModalClose() {
-  refs.overlay.classList.add("visually-hidden");
+function onAfterModalClose() {
   page = 1;
   showLibrary();
 }

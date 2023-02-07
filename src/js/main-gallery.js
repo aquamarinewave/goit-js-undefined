@@ -4,7 +4,7 @@ import { startPagination, setingsForPagination } from './pagination'
 import { getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
 import createFilmCardMarkup from './film-card';
 import createModalMarkup from './modal-film';
-import { initModal } from './library-modal';
+import { openMovieModal } from './library-modal';
 
 const mainGallery = document.querySelector(".gallery");
 
@@ -57,22 +57,9 @@ const imageURL = "https://image.tmdb.org/t/p/w500";
   
 // ----------  MODAL  ----------
 
-//  let markup = data.results.map(({ id, poster_path, title, release_date, genre_ids }) => 
-//    `<li class="movie-card card" data-filmId="${id}"> 
+const modalContent = document.querySelector(".modal__content");
 
-const refs = {
-  gallery: document.querySelector('.gallery'),
-  overlay: document.querySelector('.overlay'),
-  btnModalClose: document.querySelector(".modal__button-cls"),
-  modalContent: document.querySelector(".modal__content"),
-};
-
-if (Object.values(refs).some(el => !el)) {
-  console.error('Error: invalid markup!');
-}
-
-refs.btnModalClose.addEventListener("click", onModalClose);
-refs.gallery.addEventListener("click", onGalleryClick);
+mainGallery.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(evt) {
 
@@ -86,6 +73,7 @@ function onGalleryClick(evt) {
 
   getMovieInformationForIdAPI(filmId)
     .then(data => {
+
       const imageURL = "https://image.tmdb.org/t/p/w500";
       const movie = {
         id: data.id,
@@ -100,18 +88,10 @@ function onGalleryClick(evt) {
         original: data.original_title,
       };
 
-      refs.modalContent.innerHTML = createModalMarkup(movie);
+      modalContent.innerHTML = createModalMarkup(movie);
 
-      initModal();
-
-      refs.overlay.classList.remove('visually-hidden');
-
+      openMovieModal();
+      
     })
     .catch(console.error);
 }
-
-function onModalClose() {
-  refs.overlay.classList.add("visually-hidden");
-}
-
-// ----------  END OF MODAL  ----------
