@@ -12,7 +12,7 @@ function createFilmCardMarkup({id, posterURL = '', title = '', genres = 'no info
                 <div class="card__vl"></div>
                 <p class="card__release-year">${year}</p>
                 <div class="rating-background"> 
-                <p class="rating">5.5</p>
+                <p class="rating">${votes}</p>
                 <div>
             </div>
         </div>
