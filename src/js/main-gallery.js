@@ -78,8 +78,8 @@ function onGalleryClick(evt) {
       const movie = {
         id: data.id,
         title: data.title,
-        posterURL: `${data.poster_path ? imageURL : 'https://dummyimage.com/400x500/dbdbdb/000000.png&text=No+poster'}
-                    ${data.poster_path ? data.poster_path : ''}`,
+        posterURL: data.poster_path ? `${imageURL}${data.poster_path}` :
+                  'https://dummyimage.com/400x500/dbdbdb/000000.png&text=No+poster',
         overview: data.overview,
         genres: data.genres.map(el => el.name).join(', '),
         year: data.release_date.slice(0, 4),
