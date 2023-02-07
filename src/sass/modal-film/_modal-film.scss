@@ -47,12 +47,10 @@
 }
 .modal__is-open{
  overflow: hidden;
-// @media (min-width: 768px) {
-//  padding-right: 15px; }
+@media (min-width: 768px) {
+ padding-right: 15px; }
 }
-body {
-  padding: 0 calc(15px - (100vw - 100%)) 0 0;
-}
+
 .modal__button-cls {
   z-index: 3;
   position: absolute;
@@ -156,9 +154,7 @@ z-index: 4;
   line-height: 1.67;
   margin-bottom: 20px;
 
-  @media (max-width: 768px) {
-    // min-height: 236px;
-  }
+  
 
   @media (min-width: 768px) {
     max-height: 236px;
