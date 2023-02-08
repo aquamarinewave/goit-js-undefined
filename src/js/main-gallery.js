@@ -28,9 +28,6 @@ async function getGenresAPI() {
       return [genre.id, genre.name]})
   );
   localStorage.setItem('allGenres', JSON.stringify(savedGenres));
-  if(!response.data.genres.length){
-    gallery.textContent = `Sorry, there are no movies to display`;
-  }
 }
 
 export async function fetchHandler(pages) {
