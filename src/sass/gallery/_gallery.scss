@@ -2,8 +2,8 @@
 .gallery {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
   display: flex;
   flex-wrap: wrap;
 
@@ -12,22 +12,22 @@
   @media screen and (min-width: 768px) {
     padding-top: 60px;
     padding-bottom: 60px;
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
     gap: 32px;
   }
 
   // Desktop
   @media screen and (min-width: 1280px) {
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
     gap: 16px;
   }
 }
 
 .cont_gallery {
-  padding-left: 0px;
-  padding-right: 0px;
+  // padding-left: 0px;
+  // padding-right: 0px;
 }
 
 // Gallery background
