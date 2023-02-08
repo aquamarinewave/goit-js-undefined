@@ -74,6 +74,7 @@ $color_active_button: #ff6b01;
   border: 1px solid $color_white;
   border-radius: 5px;
   &.is-active{
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   background-color: $color_active_button;
   border: 1px solid $color_active_button;
   }
