@@ -8,6 +8,7 @@ let myLib = myLibs.watched;
 
 let page = 1;
 const per_page = 9;   
+let prevCount;
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -115,15 +116,17 @@ function onGalleryClick(evt) {
     return;
   }
 
+  prevCount = myLib.getCount();
+
   refs.modalContent.innerHTML = createModalMarkup(movie);
 
   openMovieModal(onAfterModalClose);
 }
 
-function onAfterModalClose() {
-  if (myLib.getCount() < ((page - 1) * per_page + 1)) {
+function onAfterModalClose() { 
+  if (myLib.getCount() !== prevCount) {
     page = 1;
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    showLibrary();
+    prevCount = myLib.getCount();
   }
-  showLibrary();
 }
