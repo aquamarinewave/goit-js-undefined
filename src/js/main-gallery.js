@@ -42,7 +42,7 @@ export async function fetchHandler(pages) {
 getGenresAPI()
   .then(() => fetchHandler())
   .catch(error => {console.log(error)
-    gallery.insertAdjacentHTML('beforeend', `<li class="gallery_pin">Sorry, there are no movies to display</li>`)
+    gallery.textContent = 'Sorry, there are no movies to display';
   });
     
 loader.hidden = true;
