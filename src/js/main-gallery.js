@@ -13,6 +13,7 @@ const baseImageURL = "https://image.tmdb.org/t/p/w500";
 const mainGallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 const formSearch = document.querySelector('.search__inputbutton');
+const gallery = document.querySelector('.gallery_pin')
 
 formSearch.addEventListener('submit', onSearch);
 
@@ -20,12 +21,16 @@ let savedGenres;
 
 async function getGenresAPI() {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=df88ba4f44a5ed712dd0a71f1b3d877c&language=en-US`
+    `https://api.themoviedb.org/3/genre/movie/list?api_k2ey=df88ba4f44a5ed712dd0a71f1b3d877c&language=en-US`
   );
   savedGenres = Object.fromEntries(
-    response.data.genres.map(genre => [genre.id, genre.name])
+    response.data.genres.map(genre => {
+      return [genre.id, genre.name]})
   );
   localStorage.setItem('allGenres', JSON.stringify(savedGenres));
+  if(!response.data.genres.length){
+    gallery.textContent = `Sorry, there are no movies to display`;
+  }
 }
 
 export async function fetchHandler(pages) {
@@ -40,8 +45,10 @@ export async function fetchHandler(pages) {
 
 getGenresAPI()
   .then(() => fetchHandler())
-  .catch(console.error);
-
+  .catch(error => {console.log(error)
+    gallery.insertAdjacentHTML('beforeend', `<li class="gallery_pin">Sorry, there are no movies to display</li>`)
+  });
+    
 loader.hidden = true;
  
 function createFilmCard(results) {
