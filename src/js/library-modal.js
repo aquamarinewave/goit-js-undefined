@@ -38,7 +38,7 @@ export function openMovieModal(onAfterClose = null) {
   
   refreshBtns();
 
-  refsM.overlay.classList.remove('visually-hidden');
+  refsM.overlay.classList.remove('modal__is-hidden');
   document.body.classList.add("modal__is-open");
 
   return refsM;
@@ -103,7 +103,7 @@ function getMovieModal() {
 }
 
 function onModalClose() {
-  refsM.overlay.classList.add("visually-hidden");
+  refsM.overlay.classList.add("modal__is-hidden");
   document.body.classList.remove("modal__is-open");
   
   if (handlerAfterClose) { 
