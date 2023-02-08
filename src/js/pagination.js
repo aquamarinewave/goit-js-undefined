@@ -55,7 +55,12 @@ export const startPagination = ({ page = 1, totalItems }) => {
       });
     } else if (setingsForPagination.typePagination === 'getSearchMovieAPI') {
       getSearchMovieAPI(setingsForPagination.searchQuery, page).then(
-        data => (gallery.innerHTML = createSearchMarkup(data))
+        //data => (gallery.innerHTML = createSearchMarkup(data))
+        data => {
+          const { page, total_results: totalItems } = data;
+          startPagination({ page, totalItems });
+          gallery.innerHTML = createSearchMarkup(data);
+        }
       );
       window.scrollTo({
         top: 0,

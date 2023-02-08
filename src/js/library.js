@@ -121,6 +121,9 @@ function onGalleryClick(evt) {
 }
 
 function onAfterModalClose() {
-  page = 1;
+  if (myLib.getCount() < ((page - 1) * per_page + 1)) {
+    page = 1;
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
   showLibrary();
 }

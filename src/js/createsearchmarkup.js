@@ -18,7 +18,7 @@ function createSearchMarkup(data) {
             ? res.genre_ids.map(id => savedGenres[id]).join(', ')
             : ''
         }`,
-        year: res.release_date.slice(0, 4),
+        year: res.release_date ? res.release_date.slice(0, 4) : '',
         vote: res.vote_average ? res.vote_average.toFixed(1) : '0'
       })
     )
