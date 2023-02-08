@@ -13,6 +13,7 @@ const baseImageURL = "https://image.tmdb.org/t/p/w500";
 const mainGallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 const formSearch = document.querySelector('.search__inputbutton');
+const gallery = document.querySelector('.gallery_pin')
 
 formSearch.addEventListener('submit', onSearch);
 
@@ -40,8 +41,10 @@ export async function fetchHandler(pages) {
 
 getGenresAPI()
   .then(() => fetchHandler())
-  .catch(console.error);
-
+  .catch(error => {console.log(error)
+    gallery.insertAdjacentHTML('beforeend', `<li class="gallery_pin">Sorry, there are no movies to display</li>`)
+  });
+    
 loader.hidden = true;
  
 function createFilmCard(results) {

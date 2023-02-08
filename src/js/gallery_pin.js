@@ -1,1 +1,1 @@
-document.querySelector('.gallery_pin').classList.add('visually-hidden');
+// document.querySelector('.gallery_pin').classList.add('visually-hidden');
