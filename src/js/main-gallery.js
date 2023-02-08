@@ -24,8 +24,7 @@ async function getGenresAPI() {
     `https://api.themoviedb.org/3/genre/movie/list?api_key=df88ba4f44a5ed712dd0a71f1b3d877c&language=en-US`
   );
   savedGenres = Object.fromEntries(
-    response.data.genres.map(genre => {
-      return [genre.id, genre.name]})
+    response.data.genres.map(genre => [genre.id, genre.name])
   );
   localStorage.setItem('allGenres', JSON.stringify(savedGenres));
 }
