@@ -6,23 +6,27 @@ import { getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
 import createFilmCardMarkup from './film-card';
 import createModalMarkup from './modal-film';
 import { openMovieModal } from './library-modal';
+import { onSearch } from './search';
 
 const baseImageURL = "https://image.tmdb.org/t/p/w500";
 
 const mainGallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+const formSearch = document.querySelector('.search__inputbutton');
+
+formSearch.addEventListener('submit', onSearch);
+
+let savedGenres;
 
 async function getGenresAPI() {
   const response = await axios.get(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=df88ba4f44a5ed712dd0a71f1b3d877c&language=en-US`
   );
-  const savedGenres = Object.fromEntries(
+  savedGenres = Object.fromEntries(
     response.data.genres.map(genre => [genre.id, genre.name])
   );
   localStorage.setItem('allGenres', JSON.stringify(savedGenres));
 }
-getGenresAPI();
-const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
 
 export async function fetchHandler(pages) {
   const { page, total_results: totalItems, results } = await getTrendingAPI(pages);
@@ -33,9 +37,10 @@ export async function fetchHandler(pages) {
   
 }
 
-fetchHandler()
+getGenresAPI()
+  .then(() => fetchHandler())
+  .catch(console.error);
 
-//console.log(data.results)
 function createFilmCard(results) {
   let murkup = results.map(res => 
     createFilmCardMarkup({
@@ -49,14 +54,15 @@ function createFilmCard(results) {
     }
   )
   ).join('')
- loader.hidden = true;
+  
+  loader.hidden = true;
   mainGallery.innerHTML = murkup;
-   
-  }
+}
   
 // ----------  MODAL  ----------
+
 const loader_modal = document.querySelector('.loader_modal');
-// console.log(loader_modal);
+
 const modalContent = document.querySelector(".modal__content");
 
 mainGallery.addEventListener("click", onGalleryClick);
