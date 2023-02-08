@@ -1,15 +1,15 @@
-const firstBtn = document.querySelector('.first-btn__press');
-const firstBack = document.querySelector('.first-backdrop');
-const secondBtn = document.querySelector('.second-btn__press');
-const secondBack = document.querySelector('.second-backdrop');
-const thirdBtn = document.querySelector('.third-btn__press');
-const thirdBack = document.querySelector('.third-backdrop');
-const fourthBtn = document.querySelector('.fourth-btn__press');
-const fourthBack = document.querySelector('.fourth-thumb');
-const fifthBtn = document.querySelector('.fifth-btn__press');
-const fifthBack = document.querySelector('.fifth-backdrop');
-const sixthBtn = document.querySelector('.sixth-btn__press');
-const sixthBack = document.querySelector('.sixth-backdrop');
+const firstBtn = document.querySelector('.press__first-btn');
+const firstBack = document.querySelector('.press__first-backdrop');
+const secondBtn = document.querySelector('.press__second-btn');
+const secondBack = document.querySelector('.press__second-backdrop');
+const thirdBtn = document.querySelector('.press__third-btn');
+const thirdBack = document.querySelector('.press__third-backdrop');
+const fourthBtn = document.querySelector('.press__fourth-btn');
+const fourthBack = document.querySelector('.press__fourth-thumb');
+const fifthBtn = document.querySelector('.press__fifth-btn');
+const fifthBack = document.querySelector('.press__fifth-backdrop');
+const sixthBtn = document.querySelector('.press__sixth-btn');
+const sixthBack = document.querySelector('.press__sixth-backdrop');
 firstBtn.addEventListener('click', onFirstClick);
 secondBtn.addEventListener('click', onSecondClick);
 thirdBtn.addEventListener('click', onThirdClick);
@@ -18,22 +18,22 @@ fifthBtn.addEventListener('click', onFifthClick);
 sixthBtn.addEventListener('click', onSixthClick);
 
 function onFirstClick() {
-  firstBack.classList = 'first-backdrop backdrop__press is-hidden';
+  firstBack.classList.add('is-hidden');
 }
 function onSecondClick() {
-  secondBack.classList = 'second-backdrop backdrop__press is-hidden';
+  secondBack.classList.add('is-hidden');
 }
 function onThirdClick() {
-  thirdBack.classList = 'third-backdrop backdrop__press is-hidden';
+  thirdBack.classList.add('is-hidden');
 }
 function onFourthClick() {
-  fourthBack.classList = 'fourth-thumb backdrop__press is-hidden';
+  fourthBack.classList.add('is-hidden');
 }
 
 function onFifthClick() {
-  fifthBack.classList = 'fifth-backdrop backdrop__press is-hidden';
+  fifthBack.classList.add('is-hidden');
 }
 
 function onSixthClick() {
-  sixthBack.classList = 'sixth-backdrop backdrop__press is-hidden';
+  sixthBack.classList.add('is-hidden');
 }

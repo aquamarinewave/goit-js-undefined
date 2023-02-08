@@ -1,19 +1,3 @@
-:root {
-  --animation: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  --black: #10181d;
-}
-@import '../base/container';
-@import '../base/base';
-@import '../base/resets';
-
-// utilits
-@import '../utilits/common';
-@import '../utilits/vars';
-@import '../utilits/visually-hidden';
-
-// elements
-@import '../film-card/film-card';
-
 .image {
   width: 100%;
   height: 753px;
@@ -35,7 +19,7 @@
   }
 }
 
-.third-press__header {
+.press__third-header {
   width: 100%;
   height: 70px;
   background-color: #dfdede;
@@ -59,7 +43,7 @@
   }
 }
 
-.backdrop__press--list {
+.press__backdrop--list {
   align-items: start;
   justify-content: center;
   display: flex;
@@ -68,8 +52,8 @@
   flex-wrap: wrap;
 }
 
-.third-backdrop {
-  background-color: var(--black);
+.press__third-backdrop {
+  background-color: #10181d;
 }
 
 .btn__press {
@@ -90,8 +74,8 @@
   }
 }
 
-.first-btn__press,
-.second-btn__press {
+.press__first-btn,
+.press__second-btn {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -102,7 +86,7 @@
   }
 }
 
-.press-overlay {
+.press__overlay {
   position: absolute;
   padding: 0 24px;
   width: 200px;
@@ -129,17 +113,17 @@
   }
 }
 
-.press__item:hover .press-overlay,
-.press__item:focus .press-overlay {
+.press__item:hover .press__overlay,
+.press__item:focus .press__overlay {
   transform: translateY(0);
 }
 
-.press-anim {
+.press__anim {
   position: relative;
   overflow: hidden;
 }
 
-.third-btn__press {
+.press__third-btn {
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
 
@@ -148,14 +132,14 @@
   }
 }
 
-.first-backdrop {
+.press__first-backdrop {
   z-index: 1000;
 
-  background-image: url(../../images/presentation/pres_mob.jpg);
+  background-image: url(/src/images/presentation/pres_mob.jpg);
   background-size: contain;
 
   @media screen and (min-width: 768px) {
-    background-image: url(../../images/presentation/pres_big.jpg);
+    background-image: url(/src/images/presentation/pres_big.jpg);
     background-repeat: no-repeat;
     width: 100%;
     height: 753px;
@@ -163,7 +147,7 @@
   }
 }
 
-.main-press__title {
+.press__main-title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,7 +162,7 @@
   }
 }
 
-.second-press__title {
+.press__second-title {
   position: absolute;
   top: 150px;
   left: 50px;
@@ -193,7 +177,7 @@
   }
 }
 
-.second-press__undertitle {
+.press__second-undertitle {
   position: absolute;
   top: 500px;
   left: 50px;
@@ -208,22 +192,22 @@
   }
 }
 
-.second-backdrop {
+.press__second-backdrop {
   z-index: 990;
   position: fixed;
   background-color: #10181d;
   background-size: cover;
 
   @media screen and (min-width: 1100px) {
-    background-image: url(../../images/presentation/second-slide.jpg);
+    background-image: url(/src/images/presentation/second-slide.jpg);
   }
 }
 
-.third-backdrop {
+.press__third-backdrop {
   z-index: 980;
 }
 
-.fourth-backdrop {
+.press__fourth-backdrop {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,7 +223,7 @@
   }
 }
 
-.fourth-thumb {
+.press__fourth-thumb {
   position: fixed;
 
   width: 100%;
@@ -248,14 +232,14 @@
   z-index: 970;
 }
 
-.fourth-rightside {
+.press__fourth-rightside {
   display: flex;
   flex-direction: column;
   gap: 30px;
   list-style: inside;
 }
 
-.rightside-text {
+.press__rightside-text {
   color: #dfdede;
   font-size: 18px;
 
@@ -268,33 +252,28 @@
   }
 }
 
-.rightside-text::marker {
+.press__rightside-text::marker {
   color: var(--accent-color);
   font-size: 30px;
 }
 
-.title-client {
+.press__fourth-block {
   color: #dfdede;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 30px;
+  box-shadow: (0px 8px 43px var(--accent-color));
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  padding: 15px 15px 15px 30px;
 
   @media screen and (min-width: 768px) {
     font-size: 40px;
   }
 }
 
-.fourth-client {
-  box-shadow: (0px 8px 43px var(--accent-color));
-  background-color: var(--accent-color);
-  border-radius: 5px;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.fourth-image {
+.press__fourth-image {
   box-shadow: (0px 8px 43px var(--accent-color));
   width: 300px;
   @media screen and (min-width: 768px) {
@@ -306,22 +285,22 @@
   }
 }
 
-.fourth-btn__press:hover,
-.fifth-btn__press:hover,
-.sixth-btn__press:hover {
+.press__fourth-btn:hover,
+.press__fifth-btn:hover,
+.press__sixth-btn:hover {
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
   background-color: #dfdede;
 }
 
-.fifth-backdrop {
+.press__fifth-backdrop {
   background-color: #10181d;
   width: 100%;
   height: 100%;
   z-index: 960;
 }
 
-.fifth-header {
+.press__fifth-header {
   box-shadow: (0px 8px 43px var(--accent-color));
   background-color: var(--accent-color);
   border-radius: 5px;
@@ -332,7 +311,7 @@
   color: #dfdede;
 }
 
-.fifth-title {
+.press__fifth-title {
   color: #dfdede;
   display: flex;
   justify-content: center;
@@ -348,14 +327,14 @@
   }
 }
 
-.fifth-list {
+.press__fifth-list {
   display: flex;
   flex-direction: column;
   gap: 30px;
   list-style: inside;
 }
 
-.fifth-text {
+.press__fifth-text {
   color: #dfdede;
   font-size: 20px;
 
@@ -368,12 +347,12 @@
   }
 }
 
-.fifth-text::marker {
+.press__fifth-text::marker {
   color: var(--accent-color);
   font-size: 30px;
 }
 
-.fifth-block {
+.press__fifth-block {
   display: flex;
   justify-content: center;
   margin-top: 80px;
@@ -390,20 +369,14 @@
   }
 }
 
-.fifth-way {
-  width: 100%;
-  height: 100%;
-}
-@import './heart.scss';
-
-.sixth-backdrop {
+.press__sixth-backdrop {
   background-color: #10181d;
   z-index: 950;
   width: 100%;
   height: 100%;
 }
 
-.sixth-group {
+.press__sixth-group {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -463,8 +436,8 @@
   }
 }
 
-.last-backdrop {
-  background-image: url(../../images/presentation/screen-pres.jpg);
+.press__last-backdrop {
+  background-image: url(/src/images/presentation/screen-pres.jpg);
   background-repeat: no-repeat;
   background-color: var(--accent-color);
   background-size: cover;
@@ -475,7 +448,7 @@
   }
 }
 
-.last-title {
+.press__last-title {
   background-color: #10181d;
   color: #dfdede;
   border-radius: 5px;
@@ -492,14 +465,14 @@
   }
 }
 
-.last-block {
+.press__last-block {
   position: absolute;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.last-link {
+.press__last-link {
   position: absolute;
   top: 80%;
   left: 50%;
