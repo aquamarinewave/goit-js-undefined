@@ -8,7 +8,6 @@
   flex-wrap: wrap;
   gap: 20px;
 
-  // Desktop
   // Tablet
   @media screen and (min-width: 768px) {
     padding-top: 60px;
@@ -26,10 +25,12 @@
   }
 }
 
+
 // .cont_gallery {
 // padding-left: 0px;
 // padding-right: 0px;
 // }
+
 
 // Gallery background
 .gallery-bg {
@@ -42,10 +43,3 @@
   font-size: 50px;
   height: 50vh;
 }
-
-// Card position
-// .movie-card {
-//   max-width: 359px;
-//   margin: 15px;
-//   margin-bottom: 32px;
-// }
