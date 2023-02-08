@@ -1,0 +1,1 @@
+document.querySelector('.gallery_pin').classList.add('visually-hidden');
