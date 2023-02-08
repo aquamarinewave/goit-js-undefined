@@ -10,18 +10,18 @@ function onSearch(e) {
   e.preventDefault();
   let query = e.currentTarget.elements[0].value.trim().toLowerCase();
 
-  setingsForPagination.searchQuery = query;
-  setingsForPagination.typePagination = 'getSearchMovieAPI';
-
   getSearchMovieAPI(query)
     .then(data => {
       if (data.results.length === 0) {
         Notiflix.Notify.failure(
           'Search result not successful. Enter the correct movie name and retry.'
         );
+        return;
       } else {
         const { page, total_results: totalItems } = data;
         startPagination({ page, totalItems });
+        setingsForPagination.typePagination = 'getSearchMovieAPI';
+        setingsForPagination.searchQuery = query;
         // console.log(data.results);
         gallery.innerHTML = createSearchMarkup(data);
       }
