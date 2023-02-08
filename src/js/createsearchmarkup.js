@@ -3,10 +3,8 @@ import createFilmCardMarkup from './film-card';
 export { createSearchMarkup };
 const POSTER_BASE_URL = 'http://image.tmdb.org/t/p/w500/';
 
-// const mainGallery = document.querySelector('.gallery');
-const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
-
 function createSearchMarkup(data) {
+  const savedGenres = JSON.parse(localStorage.getItem('allGenres'));
   return data.results
     .map(res =>
       createFilmCardMarkup({

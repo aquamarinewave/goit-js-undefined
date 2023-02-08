@@ -1,4 +1,4 @@
-import axios from 'axios';
+/*import axios from 'axios';
 import { BASE_URL, GLOBAL_KEY } from './show-results';
 export { getGenresAPI };
 // export { savedGenres };
@@ -14,3 +14,4 @@ async function getGenresAPI() {
   // console.log(savedGenres);
   // return savedGenres;
 }
+*/
