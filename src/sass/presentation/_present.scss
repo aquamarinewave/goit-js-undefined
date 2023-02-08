@@ -1,8 +1,3 @@
-:root {
-  --animation: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  --black: #10181d;
-}
-
 .image {
   width: 100%;
   height: 753px;
@@ -58,7 +53,7 @@
 }
 
 .press__third-backdrop {
-  background-color: var(--black);
+  background-color: #10181d;
 }
 
 .btn__press {
@@ -79,8 +74,8 @@
   }
 }
 
-.first-btn__press,
-.second-btn__press {
+.press__first-btn,
+.press__second-btn {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -128,7 +123,7 @@
   overflow: hidden;
 }
 
-.third-btn__press {
+.press__third-btn {
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
 
@@ -262,25 +257,20 @@
   font-size: 30px;
 }
 
-.press__fourth-client {
+.press__fourth-block {
   color: #dfdede;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 30px;
+  box-shadow: (0px 8px 43px var(--accent-color));
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  padding: 15px 15px 15px 30px;
 
   @media screen and (min-width: 768px) {
     font-size: 40px;
   }
-}
-
-.press__fourth-client {
-  box-shadow: (0px 8px 43px var(--accent-color));
-  background-color: var(--accent-color);
-  border-radius: 5px;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .press__fourth-image {
@@ -295,9 +285,9 @@
   }
 }
 
-.fourth-btn__press:hover,
-.fifth-btn__press:hover,
-.sixth-btn__press:hover {
+.press__fourth-btn:hover,
+.press__fifth-btn:hover,
+.press__sixth-btn:hover {
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
   background-color: #dfdede;
@@ -378,8 +368,6 @@
     gap: 200px;
   }
 }
-
-@import './heart.scss';
 
 .press__sixth-backdrop {
   background-color: #10181d;
