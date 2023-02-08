@@ -75,7 +75,7 @@ function showLibrary() {
     if (myLib.getCount() > 0) {
       refs.gallery.innerHTML = '';
     } else {  
-      refs.gallery.innerHTML = `<li class="gallery_pin">The library is empty</li>`;
+      refs.gallery.innerHTML = `<li class="gallery__pin">The library is empty</li>`;
     } 
   }
 

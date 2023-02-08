@@ -13,7 +13,7 @@ const baseImageURL = "https://image.tmdb.org/t/p/w500";
 const mainGallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 const formSearch = document.querySelector('.search__inputbutton');
-const gallery = document.querySelector('.gallery_pin')
+const gallery = document.querySelector('.gallery__pin')
 
 formSearch.addEventListener('submit', onSearch);
 

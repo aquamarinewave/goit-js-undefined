@@ -1,5 +1,10 @@
 .card {
   flex-basis: 100%;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  cursor: pointer;
+
   @media screen and(min-width:768px) {
     flex-basis: calc((100% - 32px * (2 - 1)) / 2);
   }
@@ -8,23 +13,7 @@
     font-size: 20px;
     line-height: 1.2;
   }
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
 }
-
-// .card__wrapper {
-//   height: 398px;
-
-//   @media screen and(min-width:768px) {
-//     // width: 336px;
-//     height: 455px;
-//   }
-//   @media screen and(min-width:1280px) {
-//     // width: 395px;
-//     height: 574px;
-//   }
-// }
 
 .card__pic {
   border-radius: 5px;
