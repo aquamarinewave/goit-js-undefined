@@ -6,6 +6,7 @@
 
 import './js/pagination';
 import './js/main-gallery';
+import './js/gallery_pin';
 
 /*
 import { onSearch } from './js/search';
