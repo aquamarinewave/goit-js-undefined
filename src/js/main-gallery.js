@@ -37,10 +37,13 @@ export async function fetchHandler(pages) {
   
 }
 
+
 getGenresAPI()
   .then(() => fetchHandler())
   .catch(console.error);
 
+loader.hidden = true;
+ 
 function createFilmCard(results) {
   let murkup = results.map(res => 
     createFilmCardMarkup({
@@ -55,13 +58,10 @@ function createFilmCard(results) {
   )
   ).join('')
   
-  loader.hidden = true;
   mainGallery.innerHTML = murkup;
 }
   
 // ----------  MODAL  ----------
-
-const loader_modal = document.querySelector('.loader_modal');
 
 const modalContent = document.querySelector(".modal__content");
 
@@ -70,7 +70,6 @@ mainGallery.addEventListener("click", onGalleryClick);
 function onGalleryClick(evt) {
 
   evt.preventDefault();
-  loader_modal.classList.remove('visually-hidden');
   const filmCard = evt.target.closest(".card");
   if (!filmCard) {
     return;

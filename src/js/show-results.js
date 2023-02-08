@@ -2,11 +2,13 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const GLOBAL_KEY = 'df88ba4f44a5ed712dd0a71f1b3d877c';
+const loader = document.querySelector('.loader')
 
 async function getTrendingAPI(page = 1) {
   const response = await axios.get(
     `${BASE_URL}trending/movie/day?api_key=${GLOBAL_KEY}&page=${page}`
   );
+  loader.hidden = false;
   return response.data;
 }
 
