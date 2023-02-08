@@ -15,7 +15,7 @@ function createModalMarkup({ id, posterURL = '', title = '', genres = '', year =
       <img class="modal__image" src="${posterURL?posterURL:noPosterURL}" alt="${title}"/>
     </div>
     <div class="modal__information" data-filmid="${id}">
-      <h1 class="modal__title">${title}</h1>
+      <h2 class="modal__title">${title}</h2>
       <table class="modal__table">
         <tr class="modal__tr">
           <td class="modal__td">Vote / Votes</td>
@@ -41,7 +41,7 @@ function createModalMarkup({ id, posterURL = '', title = '', genres = '', year =
           <td class="modal__td-right modal__year">${year}</td>
         </tr>
       </table>
-      <h2 class="modal__description">About</h2>
+      <h3 class="modal__description">About</h3>
       <p class="modal__text">${overview}</p>
       <div class="modal__flex">
         <button class="modal__button modal__button--watched js-active" type="button">add to Watched</button>
