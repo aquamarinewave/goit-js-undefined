@@ -56,7 +56,7 @@ function createFilmCard(results) {
   
 // ----------  MODAL  ----------
 const loader_modal = document.querySelector('.loader_modal');
-console.log(loader_modal);
+// console.log(loader_modal);
 const modalContent = document.querySelector(".modal__content");
 
 mainGallery.addEventListener("click", onGalleryClick);
