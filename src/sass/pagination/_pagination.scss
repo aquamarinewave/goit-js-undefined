@@ -6,11 +6,10 @@
 
 .container-poginnation {
   padding: 20px 0 40px 0;
-
+  justify-content: center;
   @media screen and (min-width: 768px) {
     padding: 0 0 60px 0;
   }
-  
 }
 
 .tui-pagination {
@@ -55,7 +54,7 @@
     background: var(--accent-color);
     color: #fff;
   }
-  &:not(:last-child){
+  &:not(:last-child) {
     margin: 0 3px 0 0;
   }
 }

@@ -10,9 +10,7 @@
   }
   font-weight: 500;
   font-size: 12px;
-  line-height: 14px;
-
-  color: var(--main-color);
+  line-height: 1.17;
 }
 
 .card__wrapper {
@@ -27,6 +25,7 @@
 .card__pic {
   border-radius: 5px;
   height: 100%;
+  width: 100%;
 }
 
 .card__information {
