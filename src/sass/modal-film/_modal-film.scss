@@ -14,9 +14,8 @@
   justify-content: center;
 }
 .modal {
-  
   max-height: 95vh;
-    overflow: auto;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -45,10 +44,11 @@
     gap: 16px;
   }
 }
-.modal__is-open{
- overflow: hidden;
-@media (min-width: 768px) {
- padding-right: 15px; }
+.modal__is-open {
+  overflow: hidden;
+  @media (min-width: 768px) {
+    padding-right: 15px;
+  }
 }
 
 .modal__button-cls {
@@ -62,17 +62,15 @@
   cursor: pointer;
 }
 
-.modal__button-cls-1{
+.modal__button-cls-1 {
   z-index: 3;
-    position: absolute;
-    top: 8px;
-    right: 8px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
-
-.modal__icon{
-z-index: 4;
-  
+.modal__icon {
+  z-index: 4;
 }
 .modal__image {
   min-width: 240px;
@@ -93,11 +91,11 @@ z-index: 4;
 
 .modal__title {
   text-transform: uppercase;
-  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.15;
   margin-bottom: 20px;
+
   @media (min-width: 1280px) {
     font-size: 30px;
     line-height: 1.17;
@@ -108,11 +106,10 @@ z-index: 4;
   max-width: 100%;
   margin-bottom: 20px;
 }
-.modal__tr{
+.modal__tr {
   height: 20px;
 }
 .modal__td {
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -122,12 +119,11 @@ z-index: 4;
 }
 
 .modal__td-right {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
 }
+
 .modal__vote {
   padding: 1px 9px;
   border-radius: 5px;
@@ -153,8 +149,6 @@ z-index: 4;
   font-size: 12px;
   line-height: 1.67;
   margin-bottom: 20px;
-
-  
 
   @media (min-width: 768px) {
     max-height: 236px;
@@ -191,14 +185,13 @@ z-index: 4;
 }
 
 .modal__button--watched {
-  
   padding-top: 4px;
   padding-bottom: 4px;
   min-width: 110px;
 
   @media (min-width: 768px) {
     padding: 4px 12px 4px 12px;
-   
+
     min-width: 125px;
     max-width: 125px;
   }
@@ -213,7 +206,7 @@ z-index: 4;
   min-width: 110px;
   padding-top: 4px;
   padding-bottom: 4px;
-  
+
   @media (min-width: 768px) {
     min-width: 125px;
     padding: 4px 7px 4px 7px;
@@ -226,13 +219,12 @@ z-index: 4;
 }
 
 .js-active {
-  
   white-space: nowrap;
   background-color: var(--accent-color);
   border: none;
   color: #ffffff;
   padding: 13px;
 }
-.modal__original{
+.modal__original {
   text-transform: uppercase;
 }
