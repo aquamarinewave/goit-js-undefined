@@ -66,6 +66,7 @@ $transparent_color: rgba(
   line-height: 1.16;
 
   color: #ffffff;
+
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -89,10 +90,15 @@ $transparent_color: rgba(
   & a {
     text-transform: uppercase;
     color: $color_white;
+    transition: color var(--animation);
+    &:hover,
+    &:focus {
+      color: #a8a8a8;
+    }
   }
 }
 
-.navlink__item.actual__page {
+.navlink__item.actual__page > a {
   border-bottom: 3px solid #ff001b;
 }
 
@@ -100,6 +106,7 @@ $transparent_color: rgba(
 .search__inputbutton {
   position: relative;
   border-bottom: 0.5px solid $color_white;
+  transition: border-bottom var(--animation);
   @media screen and (min-width: 768px) {
     max-width: 337px;
     margin: 0 auto;
