@@ -132,4 +132,4 @@ function onBackdropClick(evt) {
   }
 }
 
-window.addEventListener('scroll', debounce(() => document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)), 100);
+window.addEventListener('scroll', debounce(() => document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`), 100));
