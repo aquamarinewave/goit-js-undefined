@@ -100,10 +100,6 @@ $transparent_color: rgba(
 
 .navlink__item.actual__page > a {
   border-bottom: 3px solid #ff001b;
-  &:hover,
-  &:focus {
-    color: #fff;
-  }
 }
 
 //search container
@@ -145,10 +141,8 @@ $transparent_color: rgba(
   }
 }
 
-
-
 .search__inputbutton:hover,
-.search__inputbutton:focus{
+.search__inputbutton:focus {
   border-bottom: 0.5px solid #ff001b;
 }
 
