@@ -1,4 +1,5 @@
 import myLibs from './library-service';
+import debounce from 'lodash.debounce';
 
 let refsM;
 let handlerAfterClose;
@@ -131,4 +132,4 @@ function onBackdropClick(evt) {
   }
 }
 
-window.addEventListener('scroll', () => document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`));
+window.addEventListener('scroll', debounce(() => document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)), 100);
