@@ -41,6 +41,8 @@ export function openMovieModal(onAfterClose = null) {
   refsM.overlay.classList.remove('modal__is-hidden');
   document.body.classList.add("modal__is-open");
 
+  document.body.style.top = `-${document.documentElement.style.getPropertyValue('--scroll-y')}`; 
+
   return refsM;
 }
 
@@ -105,7 +107,11 @@ function getMovieModal() {
 function onModalClose() {
   refsM.overlay.classList.add("modal__is-hidden");
   document.body.classList.remove("modal__is-open");
-  
+
+  const scrollY = document.body.style.top;
+  document.body.style.top = '';
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+ 
   if (handlerAfterClose) { 
     handlerAfterClose();
   }
@@ -124,3 +130,5 @@ function onBackdropClick(evt) {
       refsM.overlay.removeEventListener("click", onBackdropClick);
   }
 }
+
+window.addEventListener('scroll', () => document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`));

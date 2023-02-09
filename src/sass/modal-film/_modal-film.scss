@@ -56,12 +56,18 @@
   }
 }
 
-.modal__is-open {
-  overflow: hidden;
+// .modal__is-open {
+//   overflow: hidden;
 
-  @media (min-width: 1280px) {
-    padding-right: 17px;
-  }
+//   @media (min-width: 1280px) {
+//     padding-right: 17px;
+//   }
+// }
+
+.modal__is-open {
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
 }
 
 .modal__button-cls {
