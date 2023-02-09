@@ -54,6 +54,7 @@ $transparent_color: rgba(
 .logo__img {
   height: 24px;
   stroke: #ffffff;
+  fill: transparent;
 }
 
 .logo__text {
@@ -142,6 +143,7 @@ $transparent_color: rgba(
   height: 24px;
   width: 24px;
   stroke: #ffffff;
+  fill: transparent;
   position: absolute;
   top: 0px;
   right: 0px;
