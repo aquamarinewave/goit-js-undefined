@@ -26,8 +26,8 @@
     <symbol id="search2" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667S20.558 3.999 14.667 3.999 4 8.775 4 14.666s4.776 10.667 10.667 10.667zM28 28l-5.8-5.8"/>
     </symbol>
-    <symbol id="arrow-up" viewBox="0 0 32 32">
-      <path d="M16 1 1 16h9v16h12V16h9z"/>
+     <symbol id="arrow-up" viewBox="0 0 28 28">
+      <path d="m26.297 20.797-2.594 2.578a.99.99 0 0 1-1.406 0L14 15.078l-8.297 8.297a.99.99 0 0 1-1.406 0l-2.594-2.578a1.009 1.009 0 0 1 0-1.422L13.297 7.797a.99.99 0 0 1 1.406 0l11.594 11.578a1.009 1.009 0 0 1 0 1.422z"/>
     </symbol>
   </defs>
 </svg>
