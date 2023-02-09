@@ -2,7 +2,6 @@ import axios from 'axios';
 import 'animate.css';
 import { getTrendingAPI, getMovieInformationForIdAPI } from './show-results';
 import { startPagination, setingsForPagination } from './pagination'
-import { getTrendingAPI, BASE_URL, GLOBAL_KEY } from './show-results';
 import createFilmCardMarkup from './film-card';
 import createModalMarkup from './modal-film';
 import { openMovieModal } from './library-modal';
@@ -37,7 +36,6 @@ export async function fetchHandler(pages) {
   createFilmCard(results)
   
 }
-
 
 getGenresAPI()
   .then(() => fetchHandler())

@@ -50,10 +50,12 @@
   font-family: 'Roboto', sans-serif;
   @include font(12px, 500, 16px);
   transition: all 250ms ease-in-out;
+
   &:hover {
     background: var(--accent-color);
     color: #fff;
   }
+
   &:not(:last-child) {
     margin: 0 3px 0 0;
   }

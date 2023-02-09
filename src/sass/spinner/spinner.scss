@@ -64,6 +64,7 @@
     width: 16px;
   }
 }
+
 .loader-modal {
   width: 175px;
   height: 80px;
@@ -83,6 +84,7 @@
   position: relative;
   box-sizing: border-box;
 }
+
 .loader-modal::after {
   content: '';
   left: 50%;
@@ -94,6 +96,7 @@
   box-sizing: border-box;
   animation: fadePush 1s linear infinite;
 }
+
 .loader-modal::before {
   content: '';
   left: 50%;

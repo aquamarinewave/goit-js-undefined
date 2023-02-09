@@ -1,13 +1,8 @@
 import Pagination from 'tui-pagination';
 import sprite from '../images/sprite.svg';
 import { fetchHandler } from './main-gallery';
-import {
-  getTrendingAPI,
-  getSearchMovieAPI,
-  getMovieInformationForIdAPI,
-} from './show-results';
+import { getSearchMovieAPI } from './show-results';
 import { createSearchMarkup } from './createsearchmarkup';
-
 
 const paginationEl = document.querySelector('#pagination');
 const gallery = document.querySelector(".gallery")
@@ -55,7 +50,6 @@ export const startPagination = ({ page = 1, totalItems }) => {
       });
     } else if (setingsForPagination.typePagination === 'getSearchMovieAPI') {
       getSearchMovieAPI(setingsForPagination.searchQuery, page).then(
-        //data => (gallery.innerHTML = createSearchMarkup(data))
         data => {
           const { page, total_results: totalItems } = data;
           startPagination({ page, totalItems });

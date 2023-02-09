@@ -29,6 +29,7 @@ $color_active_button: #ff6b01;
     }
   }
 }
+
 .buttons__list {
   list-style: none;
   display: flex;
@@ -39,21 +40,17 @@ $color_active_button: #ff6b01;
     max-width: 337px;
   }
 }
+
 .buttons__item {
   text-align: center;
 
   width: 130px;
   height: 44px;
-  // border: 1px solid $color_white;
-  
-  // border-radius: 5px;
+
   &:first-child {
     margin-right: 20px;
   }
-  // &:hover {
-  //   background-color: $color_active_button;
-  //   border: 1px solid $color_active_button;
-  // }
+
   @media screen and (min-width: 321px) {
     margin: 0 auto;
     width: 152px;
@@ -70,12 +67,21 @@ $color_active_button: #ff6b01;
   border: none;
   color: $color_white;
   text-transform: uppercase;
-
+  cursor: pointer;
   border: 1px solid $color_white;
   border-radius: 5px;
-  &.is-active{
-  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  background-color: $color_active_button;
-  border: 1px solid $color_active_button;
+  &.is-active {
+    background-color: $color_active_button;
+    border: 1px solid $color_active_button;
   }
+}
+
+.btn-library.is-active:hover,
+.btn-library.is-active:focus {
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+}
+
+.btn-library:hover,
+.btn-library:focus {
+  box-shadow: 0px 8px 43px rgba(255, 255, 255, 0.6);
 }

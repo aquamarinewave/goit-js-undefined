@@ -1,9 +1,11 @@
 .heart {
   position: relative;
   margin: 0 auto;
+
   @media screen and (min-width: 768px) {
     margin: 100px 0px 0px 0px;
   }
+  
   width: 100px;
   height: 100px;
   -webkit-transform: rotate(45deg); /* для Chrome и Safari */
@@ -64,6 +66,7 @@
   border-right: none;
   left: -70px;
 }
+
 .heart:after {
   position: absolute;
   left: 15px;
@@ -80,6 +83,7 @@
   background: -o-radial-gradient(15% 50%, 65% 65%, #ffe4e1, red);
   background: radial-gradient(15% 50%, 65% 65%, #ffe4e1, red);
 }
+
 .heart:after {
   background: red;
   background: -webkit-radial-gradient(

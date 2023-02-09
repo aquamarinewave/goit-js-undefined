@@ -3,7 +3,6 @@ import { createSearchMarkup } from './createsearchmarkup';
 import { getSearchMovieAPI } from './show-results';
 import Notiflix from 'notiflix';
 import { setingsForPagination, startPagination } from './pagination';
-// import { gallery } from '../index';
 const gallery = document.querySelector('.gallery');
 
 function onSearch(e) {
@@ -22,7 +21,6 @@ function onSearch(e) {
         startPagination({ page, totalItems });
         setingsForPagination.typePagination = 'getSearchMovieAPI';
         setingsForPagination.searchQuery = query;
-        // console.log(data.results);
         gallery.innerHTML = createSearchMarkup(data);
       }
     })
