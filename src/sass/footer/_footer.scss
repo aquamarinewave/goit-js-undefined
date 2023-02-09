@@ -17,6 +17,11 @@
   padding-left: 4px;
 }
 
+.footer__link:hover,
+.footer__link:focus {
+  color: var(--accent-color);
+}
+
 .footer__heart {
   fill: var(--accent-color);
   height: 15px;
