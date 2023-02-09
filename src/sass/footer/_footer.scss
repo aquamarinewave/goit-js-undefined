@@ -40,3 +40,20 @@
     padding-bottom: 29px;
   }
 }
+
+.chevronup__container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100000;
+}
+.chevronup__link {
+  padding: 10px 12px;
+  background: var(--accent-color);
+  border-radius: 10px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.chevronup__container .footer__heart {
+  fill: #ffffff;
+}
