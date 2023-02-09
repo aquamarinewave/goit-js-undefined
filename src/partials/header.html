@@ -1,15 +1,11 @@
 <header>
   <div class="headar__contaiter">
-    <div class="navlogo-search__container  container">
+    <div class="navlogo-search__container container">
       <div class="navlogo__container">
         <a href="./index.html" class="logo">
-          <img
-            class="logo__img"
-            src="./images/headerimg/film.png"
-            alt="logo"
-            height="24"
-            width="24"
-          />
+          <svg class="logo__img" width="24px">
+            <use href="./images/sprite.svg#logo"></use>
+          </svg>
           <span class="logo__text">Filmoteka</span>
         </a>
         <nav class="navlink">
@@ -27,12 +23,9 @@
         <form class="search__inputbutton">
           <input type="text" class="search__input" placeholder="Movie search" />
           <button type="submit" class="search__button">
-            <img
-              src="../images/sprite.svg#search2"
-              alt="search"
-              height="12"
-              width="12"
-            />
+            <svg class="logo__img" width="15px">
+              <use href="./images/sprite.svg#search2"></use>
+            </svg>
           </button>
         </form>
         <p class="search__nofind visually-hidden">

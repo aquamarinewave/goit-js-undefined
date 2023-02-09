@@ -52,8 +52,8 @@ $transparent_color: rgba(
   justify-content: center;
 }
 .logo__img {
-  width: 24px;
   height: 24px;
+  stroke: #ffffff;
 }
 
 .logo__text {
@@ -141,7 +141,7 @@ $transparent_color: rgba(
 .search__button {
   height: 24px;
   width: 24px;
-
+  stroke: #ffffff;
   position: absolute;
   top: 0px;
   right: 0px;

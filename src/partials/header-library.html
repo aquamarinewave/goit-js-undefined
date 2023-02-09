@@ -1,24 +1,40 @@
 <header>
   <div class="headar-library__contaiter">
     <div class="navlogo-search__container container">
-        <div class="navlogo__container">
+      <div class="navlogo__container">
         <a href="./index.html" class="logo">
-          <img class="logo__img" src="./images/headerimg/film.png" alt="logo" height="24" width="24">
+          <svg class="logo__img" width="24px">
+            <use href="./images/sprite.svg#logo"></use>
+          </svg>
           <span class="logo__text">Filmoteka</span>
         </a>
-      <nav class="navlink">
-        <ul class="navlink__list">
-          <li class="navlink__item"><a href="./index.html">Home</a></li>
-          <li class="navlink__item actual__page"><a href="./library.html">My library</a></li>
+        <nav class="navlink">
+          <ul class="navlink__list">
+            <li class="navlink__item"><a href="./index.html">Home</a></li>
+            <li class="navlink__item actual__page">
+              <a href="./library.html">My library</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="buttons__container">
+        <ul class="buttons__list">
+          <li class="buttons__item">
+            <button
+              type="button"
+              id="btn-watched"
+              class="btn-library is-active"
+            >
+              Watched
+            </button>
+          </li>
+          <li class="buttons__item">
+            <button type="button" id="btn-queue" class="btn-library">
+              Queue
+            </button>
+          </li>
         </ul>
-      </nav>
-    </div>
-    <div class="buttons__container">
-      <ul class="buttons__list">
-        <li class="buttons__item"><button type="button" id="btn-watched" class="btn-library is-active">Watched</button></li>
-        <li class="buttons__item"><button type="button" id="btn-queue" class="btn-library">Queue</button></li>
-      </ul>
-    </div>
+      </div>
     </div>
   </div>
 </header>
