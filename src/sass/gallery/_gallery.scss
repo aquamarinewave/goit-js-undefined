@@ -32,3 +32,11 @@
   font-size: 50px;
   height: 50vh;
 }
+
+.card__pic {
+  transition: box-shadow var(--animation);
+  &:hover,
+  &:focus {
+    box-shadow: (0px 8px 43px var(--accent-color));
+  }
+}

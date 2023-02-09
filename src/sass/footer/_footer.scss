@@ -17,6 +17,10 @@
   padding-left: 4px;
 }
 
+.footer__link {
+  transition: color var(--animation);
+}
+
 .footer__link:hover,
 .footer__link:focus {
   color: var(--accent-color);
@@ -57,6 +61,7 @@
   background: var(--accent-color);
   border-radius: 10px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transition: box-shadow var(--animation);
 }
 
 .chevronup__link:hover {
