@@ -110,8 +110,11 @@ function onModalClose() {
   document.body.classList.remove("modal__is-open");
 
   const scrollY = document.body.style.top;
+  const prevScrollBehavior = document.documentElement.style.scrollBehavior;
   document.body.style.top = '';
+  document.documentElement.style.scrollBehavior = 'auto';
   window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  document.documentElement.style.scrollBehavior = prevScrollBehavior;
  
   if (handlerAfterClose) { 
     handlerAfterClose();
