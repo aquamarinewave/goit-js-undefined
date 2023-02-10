@@ -1,5 +1,4 @@
 import myLibs from './library-service';
-import debounce from 'lodash.debounce';
 
 let refsM;
 let handlerAfterClose;
@@ -39,10 +38,12 @@ export function openMovieModal(onAfterClose = null) {
   
   refreshBtns();
 
+  beforeModalOpen();
+
   refsM.overlay.classList.remove('modal__is-hidden');
   document.body.classList.add("modal__is-open");
 
-  document.body.style.top = `-${document.documentElement.style.getPropertyValue('--scroll-y')}`; 
+  afterModalOpen();
 
   return refsM;
 }
@@ -109,12 +110,7 @@ function onModalClose() {
   refsM.overlay.classList.add("modal__is-hidden");
   document.body.classList.remove("modal__is-open");
 
-  const scrollY = document.body.style.top;
-  const prevScrollBehavior = document.documentElement.style.scrollBehavior;
-  document.body.style.top = '';
-  document.documentElement.style.scrollBehavior = 'auto';
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
-  document.documentElement.style.scrollBehavior = prevScrollBehavior;
+  afterModalClose();
  
   if (handlerAfterClose) { 
     handlerAfterClose();
@@ -135,4 +131,25 @@ function onBackdropClick(evt) {
   }
 }
 
-window.addEventListener('scroll', debounce(() => document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`), 100));
+// ----------  Запрет скролла под модальным окном  ----------
+
+let curScrollY;
+
+function beforeModalOpen() {
+  curScrollY = window.scrollY;
+}
+
+function afterModalOpen() {
+  document.body.style.top = `-${curScrollY}px`; 
+}
+
+function afterModalClose() {
+  const scrollY = document.body.style.top;
+  const prevScrollBehavior = document.documentElement.style.scrollBehavior;
+  document.body.style.top = '';
+  document.documentElement.style.scrollBehavior = 'auto';
+  window.scrollTo({ left: 0, top: parseInt(scrollY || '0') * -1, behavior: 'auto' });
+  document.documentElement.style.scrollBehavior = prevScrollBehavior;
+}
+
+// ----------  END - запрет скролла ----------
